@@ -25,8 +25,9 @@ const PhaseCard = ({ title, description, details, icon, index, color }: PhaseCar
     >
       <div className="flex items-start gap-4">
         <div
-          className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-primary-foreground"
-          style={{ background: `var(${color})` }}
+          className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-primary-foreground ${
+            color === "--gradient-meiosis" ? "bg-secondary" : "bg-primary"
+          }`}
         >
           {icon}
         </div>
