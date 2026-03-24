@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Dna, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { Dna, Menu, X, Sun, Moon } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const navItems = [
   { path: "/", label: "Início" },
