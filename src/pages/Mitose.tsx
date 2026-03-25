@@ -129,6 +129,54 @@ const MitosePage = () => {
           </div>
         </div>
 
+        {/* What is Mitosis - detailed text */}
+        <div className="max-w-3xl mx-auto mb-16 space-y-4">
+          <ContentSection title="O que é Mitose?" icon={<Microscope className="w-5 h-5" />} variant="mitosis">
+            <p>
+              A <strong className="text-foreground">mitose</strong> é um tipo de divisão celular que ocorre nas células somáticas (todas as células do corpo, exceto as reprodutivas). Ela garante que cada nova célula receba uma cópia completa e exata do material genético da célula original.
+            </p>
+            <p>
+              Todo o processo é cuidadosamente regulado por proteínas chamadas <strong className="text-foreground">ciclinas</strong> e <strong className="text-foreground">quinases dependentes de ciclinas (CDKs)</strong>, que funcionam como um "semáforo" celular — permitindo ou impedindo que a célula avance para a próxima etapa da divisão.
+            </p>
+            <p>
+              Antes de iniciar a mitose, a célula passa pela <strong className="text-foreground">interfase</strong>, um período de intensa atividade onde o DNA é duplicado (fase S), a célula cresce (fases G1 e G2) e se prepara para a divisão. A interfase ocupa cerca de 90% do ciclo celular!
+            </p>
+          </ContentSection>
+
+          <ContentSection title="Por que a Mitose é importante?" icon={<HeartPulse className="w-5 h-5" />} variant="mitosis">
+            <p>Sem a mitose, a vida multicelular seria impossível. Ela é responsável por:</p>
+            <ul className="list-disc list-inside space-y-1.5 ml-2">
+              <li><strong className="text-foreground">Crescimento:</strong> Um bebê humano nasce com ~2 trilhões de células e chega a ~37 trilhões na fase adulta — tudo graças à mitose.</li>
+              <li><strong className="text-foreground">Regeneração:</strong> Quando você se corta, as células ao redor da ferida se dividem por mitose para reparar o tecido danificado.</li>
+              <li><strong className="text-foreground">Renovação:</strong> As células do intestino são substituídas a cada 3-5 dias, e as da pele a cada 2-3 semanas.</li>
+              <li><strong className="text-foreground">Reprodução assexuada:</strong> Organismos como bactérias, leveduras e alguns animais (como a hidra) se reproduzem por mitose.</li>
+            </ul>
+          </ContentSection>
+
+          <ContentSection title="Quando a Mitose dá errado" icon={<Info className="w-5 h-5" />} variant="mitosis">
+            <p>
+              Quando os mecanismos de controle falham, a célula pode se dividir de forma descontrolada, dando origem a tumores. O <strong className="text-foreground">câncer</strong> é essencialmente uma doença da mitose desregulada. Mutações em genes como o <strong className="text-foreground">p53</strong> (o "guardião do genoma") podem impedir que células danificadas sejam eliminadas, permitindo sua multiplicação.
+            </p>
+            <p>
+              Por isso, muitos tratamentos de quimioterapia atuam justamente interferindo na mitose das células cancerosas — impedindo a formação do fuso mitótico ou bloqueando a replicação do DNA.
+            </p>
+          </ContentSection>
+        </div>
+
+        {/* Interactive Demo */}
+        <div className="max-w-3xl mx-auto mb-16">
+          <div className="flex items-center gap-3 mb-6 justify-center">
+            <FlaskConical className="w-5 h-5 text-primary" />
+            <h2 className="font-display text-2xl font-bold text-foreground">
+              Demonstração Interativa
+            </h2>
+          </div>
+          <p className="text-muted-foreground text-center mb-6 text-sm">
+            Navegue pelas etapas para ver como a mitose acontece dentro da célula.
+          </p>
+          <CellDivisionDemo type="mitosis" />
+        </div>
+
         {/* Phases */}
         <div className="max-w-2xl mx-auto space-y-4 mb-16">
           <div className="flex items-center gap-3 mb-6 justify-center">
