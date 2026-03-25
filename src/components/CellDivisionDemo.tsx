@@ -67,7 +67,7 @@ const CellVisual = ({ step, type }: { step: DemoStep; type: "mitosis" | "meiosis
           <svg viewBox="0 0 200 200" className="w-full h-full">
             <motion.circle cx={100} cy={100} r={70} fill={bgColor} stroke={borderColor} strokeWidth={2}
               animate={{ r: [70, 73, 70] }} transition={{ duration: 3, repeat: Infinity }} />
-            <motion.circle cx={100} cy={100} r={25} fill={mainColor} opacity={0.2} stroke={mainColor} strokeWidth={1} opacity={0.4}
+            <motion.circle cx={100} cy={100} r={25} fill={mainColor} opacity={0.3} stroke={mainColor} strokeWidth={1}
               animate={{ r: [25, 27, 25] }} transition={{ duration: 2.5, repeat: Infinity }} />
             {/* Cromatina difusa */}
             {[0, 60, 120, 180, 240, 300].map((angle, i) => {
