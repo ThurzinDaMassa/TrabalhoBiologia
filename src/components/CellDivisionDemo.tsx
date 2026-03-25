@@ -228,8 +228,8 @@ const CellVisual = ({ step, type }: { step: DemoStep; type: "mitosis" | "meiosis
               animate={{ cx: [65, 55] }} transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }} />
             <motion.circle cx={140} cy={100} r={38} fill={bgColor} stroke={borderColor} strokeWidth={2}
               animate={{ cx: [135, 145] }} transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }} />
-            <motion.circle cx={60} cy={100} r={14} fill={mainColor} opacity={0.15} stroke={mainColor} strokeWidth={1} opacity={0.3} />
-            <motion.circle cx={140} cy={100} r={14} fill={mainColor} opacity={0.15} stroke={mainColor} strokeWidth={1} opacity={0.3} />
+            <motion.circle cx={60} cy={100} r={14} fill={mainColor} opacity={0.2} stroke={mainColor} strokeWidth={1} />
+            <motion.circle cx={140} cy={100} r={14} fill={mainColor} opacity={0.2} stroke={mainColor} strokeWidth={1} />
             {/* Cromossomos em cada célula */}
             <line x1={53} y1={93} x2={53} y2={107} stroke={chr1} strokeWidth={2.5} strokeLinecap="round" />
             <line x1={60} y1={93} x2={60} y2={107} stroke={chr2} strokeWidth={2.5} strokeLinecap="round" />
