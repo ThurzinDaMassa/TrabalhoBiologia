@@ -181,8 +181,8 @@ const CellVisual = ({ step, type }: { step: DemoStep; type: "mitosis" | "meiosis
             {/* Duas regiões nucleares */}
             <motion.circle cx={60} cy={100} r={40} fill={bgColor} stroke={borderColor} strokeWidth={2} />
             <motion.circle cx={140} cy={100} r={40} fill={bgColor} stroke={borderColor} strokeWidth={2} />
-            <motion.circle cx={60} cy={100} r={15} fill={mainColor} opacity={0.15} stroke={mainColor} strokeWidth={1} opacity={0.3} />
-            <motion.circle cx={140} cy={100} r={15} fill={mainColor} opacity={0.15} stroke={mainColor} strokeWidth={1} opacity={0.3} />
+            <motion.circle cx={60} cy={100} r={15} fill={mainColor} opacity={0.2} stroke={mainColor} strokeWidth={1} />
+            <motion.circle cx={140} cy={100} r={15} fill={mainColor} opacity={0.2} stroke={mainColor} strokeWidth={1} />
             {/* Sulco de clivagem */}
             <motion.line x1={100} y1={55} x2={100} y2={145} stroke={mainColor} strokeWidth={2} strokeDasharray="4 3"
               animate={{ opacity: [0.3, 0.7, 0.3] }} transition={{ duration: 2, repeat: Infinity }} />
