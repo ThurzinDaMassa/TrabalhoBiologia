@@ -1,97 +1,16 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Brain, RotateCcw, Trophy, Award, Target, ArrowRight, Share2 } from "lucide-react";
-import { useState } from "react";
+import { Brain, RotateCcw, Trophy, Target } from "lucide-react";
+import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import QuizQuestion from "@/components/QuizQuestion";
-
-const questions = [
-  {
-    question: "Quantas células-filhas são produzidas ao final da mitose?",
-    options: ["1", "2", "4", "8"],
-    correctIndex: 1,
-  },
-  {
-    question: "Em qual fase da mitose os cromossomos se alinham na placa equatorial?",
-    options: ["Prófase", "Metáfase", "Anáfase", "Telófase"],
-    correctIndex: 1,
-  },
-  {
-    question: "O crossing-over ocorre em qual fase da meiose?",
-    options: ["Metáfase I", "Prófase I", "Anáfase II", "Telófase I"],
-    correctIndex: 1,
-  },
-  {
-    question: "As células resultantes da meiose são:",
-    options: [
-      "Diploides e idênticas",
-      "Haploides e idênticas",
-      "Diploides e diferentes",
-      "Haploides e diferentes",
-    ],
-    correctIndex: 3,
-  },
-  {
-    question: "A meiose I é chamada de divisão reducional porque:",
-    options: [
-      "Reduz o tamanho das células",
-      "Reduz o número de cromossomos pela metade",
-      "Reduz a quantidade de DNA",
-      "Reduz o número de organelas",
-    ],
-    correctIndex: 1,
-  },
-  {
-    question: "A mitose ocorre em quais tipos de células?",
-    options: [
-      "Apenas células germinativas",
-      "Apenas células somáticas",
-      "Células somáticas e germinativas",
-      "Apenas células vegetais",
-    ],
-    correctIndex: 1,
-  },
-  {
-    question: "Na anáfase da mitose, o que se separa?",
-    options: [
-      "Cromossomos homólogos",
-      "Cromátides-irmãs",
-      "Células-filhas",
-      "Nucléolos",
-    ],
-    correctIndex: 1,
-  },
-  {
-    question: "Qual a principal função biológica da meiose?",
-    options: [
-      "Crescimento do organismo",
-      "Reparo de tecidos",
-      "Formação de gametas",
-      "Regeneração celular",
-    ],
-    correctIndex: 2,
-  },
-  {
-    question: "A Síndrome de Down é causada por um erro na:",
-    options: [
-      "Mitose",
-      "Meiose (não-disjunção)",
-      "Citocinese",
-      "Replicação do DNA",
-    ],
-    correctIndex: 1,
-  },
-  {
-    question: "Quantas divisões celulares ocorrem na meiose?",
-    options: ["1", "2", "3", "4"],
-    correctIndex: 1,
-  },
-];
+import { getRandomQuestions, QUESTIONS_PER_QUIZ } from "@/data/quizQuestions";
 
 const QuizPage = () => {
   const [score, setScore] = useState(0);
   const [answered, setAnswered] = useState(0);
   const [key, setKey] = useState(0);
+  const questions = useMemo(() => getRandomQuestions(), [key]);
 
   const handleAnswer = (correct: boolean) => {
     if (correct) setScore((s) => s + 1);
