@@ -204,6 +204,20 @@ const MitosePage = () => {
           ))}
         </div>
 
+        {/* YouTube Videos */}
+        <div className="max-w-3xl mx-auto mb-16">
+          <div className="flex items-center gap-3 mb-6 justify-center">
+            <Video className="w-5 h-5 text-primary" />
+            <h2 className="font-display text-2xl font-bold text-foreground">
+              Vídeos de Referência
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            <YouTubeEmbed videoId="Wy3N5NCZBHQ" title="Mitose — Khan Academy" />
+            <YouTubeEmbed videoId="f-ldPgEfAHI" title="Mitose — Biologia Total" />
+          </div>
+        </div>
+
         {/* Curiosities */}
         <div className="max-w-2xl mx-auto mb-16">
           <h2 className="font-display text-2xl font-bold text-foreground mb-6 text-center">

@@ -25,6 +25,7 @@ const App = () => (
           <Route path="/meiose" element={<MeiosePage />} />
           <Route path="/comparacao" element={<ComparisonPage />} />
           <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/jogo" element={<PhaseGamePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
