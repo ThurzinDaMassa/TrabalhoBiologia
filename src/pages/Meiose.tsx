@@ -84,6 +84,11 @@ const curiosidades = [
   "Erros na meiose podem causar condições como a Síndrome de Down (trissomia do cromossomo 21).",
   "A meiose garante que, na fecundação, o número de cromossomos da espécie seja mantido de geração em geração.",
   "Sem a meiose, todos os irmãos seriam geneticamente idênticos (clones) — menos gêmeos univitelinos, que já são!",
+  "Um homem produz cerca de 1.500 espermatozoides por segundo — todos através da meiose!",
+  "Os óvulos humanos iniciam a meiose durante o desenvolvimento fetal e só a completam décadas depois, quando são fecundados.",
+  "A prófase I é tão complexa que é dividida em 5 subfases: leptóteno, zigóteno, paquíteno, diplóteno e diacinese.",
+  "Em abelhas, os machos (zangões) se desenvolvem a partir de óvulos não fecundados — são haploides naturalmente!",
+  "Combinando a segregação independente dos dois pais, há mais de 70 trilhões de combinações genéticas possíveis para cada filho.",
 ];
 
 const keyPoints = [
