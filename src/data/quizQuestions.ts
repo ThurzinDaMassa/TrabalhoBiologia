@@ -19,6 +19,13 @@ const allQuestions: QuizQuestionData[] = [
   { question: "Em qual fase da mitose as cromátides estão mais condensadas?", options: ["Prófase", "Metáfase", "Anáfase", "Interfase"], correctIndex: 1 },
   { question: "O centrômero é importante na mitose porque:", options: ["Produz energia", "Liga as cromátides-irmãs e se conecta ao fuso", "Sintetiza proteínas", "Armazena DNA extra"], correctIndex: 1 },
   { question: "A mitose é essencial para:", options: ["Produção de gametas", "Crescimento e reparo de tecidos", "Variabilidade genética", "Redução cromossômica"], correctIndex: 1 },
+  { question: "A colchicina impede a mitose ao bloquear:", options: ["A replicação do DNA", "A formação do fuso mitótico", "A síntese de proteínas", "A citocinese"], correctIndex: 1 },
+  { question: "O checkpoint G2/M verifica:", options: ["Se a célula tem nutrientes", "Se o DNA foi replicado corretamente", "Se a citocinese está completa", "Se os ribossomos estão prontos"], correctIndex: 1 },
+  { question: "As ciclinas controlam a mitose atuando junto com:", options: ["Ribossomos", "CDKs (quinases dependentes de ciclinas)", "Histonas", "Telomerase"], correctIndex: 1 },
+  { question: "A enzima separase na anáfase cliva:", options: ["O DNA", "As coesinas", "Os microtúbulos", "As histonas"], correctIndex: 1 },
+  { question: "O anel contrátil da citocinese em células animais é composto por:", options: ["Tubulina", "Actina e miosina", "Queratina", "Colágeno"], correctIndex: 1 },
+  { question: "Qual fase do ciclo celular ocupa mais tempo?", options: ["Prófase", "Metáfase", "Interfase", "Anáfase"], correctIndex: 2 },
+  { question: "O gene p53 é importante porque:", options: ["Acelera a divisão celular", "Impede a divisão de células com DNA danificado", "Codifica o fuso mitótico", "Produz ciclinas"], correctIndex: 1 },
 
   // === MEIOSE ===
   { question: "O crossing-over ocorre em qual fase da meiose?", options: ["Metáfase I", "Prófase I", "Anáfase II", "Telófase I"], correctIndex: 1 },
@@ -34,6 +41,12 @@ const allQuestions: QuizQuestionData[] = [
   { question: "O quiasma observado na prófase I é evidência de:", options: ["Mutação", "Crossing-over", "Não-disjunção", "Apoptose"], correctIndex: 1 },
   { question: "As tétrades (bivalentes) são formadas durante a:", options: ["Metáfase II", "Prófase I", "Anáfase I", "Telófase II"], correctIndex: 1 },
   { question: "A variabilidade genética na meiose é garantida por:", options: ["Replicação do DNA", "Crossing-over e segregação independente", "Citocinese", "Condensação dos cromossomos"], correctIndex: 1 },
+  { question: "A prófase I é subdividida em quantas etapas?", options: ["3", "4", "5", "6"], correctIndex: 2 },
+  { question: "A subfase da prófase I em que ocorre o pareamento é:", options: ["Leptóteno", "Zigóteno", "Paquíteno", "Diplóteno"], correctIndex: 1 },
+  { question: "O complexo sinaptonêmico é uma estrutura que:", options: ["Separa homólogos", "Mantém homólogos pareados durante o crossing-over", "Forma o fuso", "Divide o citoplasma"], correctIndex: 1 },
+  { question: "A intercinese é diferente da interfase porque:", options: ["Dura mais tempo", "Não ocorre replicação do DNA", "Os cromossomos se descondesam completamente", "Ocorre crossing-over"], correctIndex: 1 },
+  { question: "Na ovogênese humana, a meiose I se completa:", options: ["Antes do nascimento", "Na puberdade", "Na ovulação", "Na fecundação"], correctIndex: 2 },
+  { question: "A meiose II na ovogênese se completa:", options: ["Na ovulação", "Na fecundação", "Na puberdade", "No desenvolvimento embrionário"], correctIndex: 1 },
 
   // === COMPARAÇÃO E CONCEITOS GERAIS ===
   { question: "A Síndrome de Down é causada por um erro na:", options: ["Mitose", "Meiose (não-disjunção)", "Citocinese", "Replicação do DNA"], correctIndex: 1 },
@@ -50,6 +63,16 @@ const allQuestions: QuizQuestionData[] = [
   { question: "Células cancerosas se dividem descontroladamente por falhas na:", options: ["Meiose", "Regulação do ciclo celular (mitose)", "Fecundação", "Gametogênese"], correctIndex: 1 },
   { question: "O período S da interfase é quando ocorre:", options: ["Síntese de proteínas", "Replicação do DNA", "Divisão celular", "Condensação dos cromossomos"], correctIndex: 1 },
   { question: "Após a meiose I, as células são:", options: ["Diploides", "Haploides com cromátides duplicadas", "Haploides com cromátides simples", "Tetraploides"], correctIndex: 1 },
+  { question: "Os corpúsculos polares formados na ovogênese:", options: ["Se tornam óvulos", "Degeneram", "Se tornam espermatozoides", "Se dividem novamente"], correctIndex: 1 },
+  { question: "A Síndrome de Turner (45,X) é resultado de:", options: ["Trissomia", "Monossomia", "Poliploidia", "Mutação pontual"], correctIndex: 1 },
+  { question: "Um organismo triploide (3n) geralmente é:", options: ["Fértil", "Estéril", "Haploide", "Normal"], correctIndex: 1 },
+  { question: "O cinetócoro é uma estrutura que:", options: ["Produz ATP", "Liga o cromossomo às fibras do fuso", "Replica o DNA", "Sintetiza RNA"], correctIndex: 1 },
+  { question: "A telomerase é importante porque:", options: ["Encurta os telômeros", "Evita o encurtamento dos telômeros", "Condensa cromossomos", "Forma o fuso"], correctIndex: 1 },
+  { question: "As histonas são proteínas que:", options: ["Degradam o DNA", "Ajudam na compactação do DNA", "Replicam o DNA", "Transportam RNA"], correctIndex: 1 },
+  { question: "A apoptose é:", options: ["Divisão celular descontrolada", "Morte celular programada", "Fusão celular", "Migração celular"], correctIndex: 1 },
+  { question: "Os centrômeros estão localizados:", options: ["Nas extremidades dos cromossomos", "Na região de constrição primária", "No nucléolo", "Na membrana nuclear"], correctIndex: 1 },
+  { question: "Um zigoto humano é:", options: ["Haploide (23 cromossomos)", "Diploide (46 cromossomos)", "Triploide (69 cromossomos)", "Tetraploide (92 cromossomos)"], correctIndex: 1 },
+  { question: "A fibra cromossômica de 30nm é formada por:", options: ["DNA nu", "Nucleossomos compactados em solenóide", "Apenas histonas", "RNA e proteínas"], correctIndex: 1 },
 ];
 
 /** Shuffle array using Fisher-Yates and return first `count` items */

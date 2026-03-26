@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { GitBranch, Circle, Target, ArrowUpDown, SplitSquareVertical, Shuffle, ArrowRight, BookOpen, Dna, Baby, AlertTriangle } from "lucide-react";
+import { GitBranch, Circle, Target, ArrowUpDown, SplitSquareVertical, Shuffle, ArrowRight, BookOpen, Dna, Baby, AlertTriangle, Video } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import PhaseCard from "@/components/PhaseCard";
 import CuriosityCard from "@/components/CuriosityCard";
 import ContentSection from "@/components/ContentSection";
 import CellDivisionDemo from "@/components/CellDivisionDemo";
+import YouTubeEmbed from "@/components/YouTubeEmbed";
 import meiosisImg from "@/assets/meiosis-hero.jpg";
 
 const meiosisI = [
@@ -83,6 +84,11 @@ const curiosidades = [
   "Erros na meiose podem causar condições como a Síndrome de Down (trissomia do cromossomo 21).",
   "A meiose garante que, na fecundação, o número de cromossomos da espécie seja mantido de geração em geração.",
   "Sem a meiose, todos os irmãos seriam geneticamente idênticos (clones) — menos gêmeos univitelinos, que já são!",
+  "Um homem produz cerca de 1.500 espermatozoides por segundo — todos através da meiose!",
+  "Os óvulos humanos iniciam a meiose durante o desenvolvimento fetal e só a completam décadas depois, quando são fecundados.",
+  "A prófase I é tão complexa que é dividida em 5 subfases: leptóteno, zigóteno, paquíteno, diplóteno e diacinese.",
+  "Em abelhas, os machos (zangões) se desenvolvem a partir de óvulos não fecundados — são haploides naturalmente!",
+  "Combinando a segregação independente dos dois pais, há mais de 70 trilhões de combinações genéticas possíveis para cada filho.",
 ];
 
 const keyPoints = [
@@ -252,6 +258,20 @@ const MeiosePage = () => {
               color={phase.color}
             />
           ))}
+        </div>
+
+        {/* YouTube Videos */}
+        <div className="max-w-3xl mx-auto mb-16">
+          <div className="flex items-center gap-3 mb-6 justify-center">
+            <Video className="w-5 h-5 text-secondary" />
+            <h2 className="font-display text-2xl font-bold text-foreground">
+              Vídeos de Referência
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            <YouTubeEmbed videoId="nMakmH1hMCg" title="Meiose — Khan Academy" />
+            <YouTubeEmbed videoId="VzDMG7ke69g" title="Meiose — Biologia Total" />
+          </div>
         </div>
 
         {/* Curiosities */}

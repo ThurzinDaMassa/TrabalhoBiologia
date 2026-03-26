@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Play, Pause, RotateCcw, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface DemoStep {
@@ -261,7 +261,7 @@ const CellDivisionDemo = ({ type }: CellDivisionDemoProps) => {
   const reset = () => { setCurrentStep(0); setIsPlaying(false); };
 
   // Auto-play
-  useState(() => {
+  useEffect(() => {
     if (!isPlaying) return;
     const interval = setInterval(() => {
       setCurrentStep((s) => {
@@ -270,7 +270,7 @@ const CellDivisionDemo = ({ type }: CellDivisionDemoProps) => {
       });
     }, 3000);
     return () => clearInterval(interval);
-  });
+  }, [isPlaying, steps.length]);
 
   return (
     <div className="glass-card p-6 md:p-8">

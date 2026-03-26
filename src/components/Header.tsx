@@ -9,6 +9,7 @@ const navItems = [
   { path: "/meiose", label: "Meiose" },
   { path: "/comparacao", label: "Comparação" },
   { path: "/quiz", label: "Quiz" },
+  { path: "/jogo", label: "Jogo" },
 ];
 
 const Header = () => {

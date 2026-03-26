@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { FlaskConical, Circle, Target, ArrowUpDown, SplitSquareVertical, Scissors, ArrowRight, BookOpen, Microscope, HeartPulse, Info } from "lucide-react";
+import { FlaskConical, Circle, Target, ArrowUpDown, SplitSquareVertical, Scissors, ArrowRight, BookOpen, Microscope, HeartPulse, Info, Video } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import PhaseCard from "@/components/PhaseCard";
 import CuriosityCard from "@/components/CuriosityCard";
 import ContentSection from "@/components/ContentSection";
 import CellDivisionDemo from "@/components/CellDivisionDemo";
+import YouTubeEmbed from "@/components/YouTubeEmbed";
 import mitosisImg from "@/assets/mitosis-hero.jpg";
 
 const phases = [
@@ -56,6 +57,11 @@ const curiosidades = [
   "Seu corpo produz cerca de 3,8 milhões de células por segundo através da mitose.",
   "Células cancerosas se dividem descontroladamente por falhas nos mecanismos de controle da mitose.",
   "As células do fígado podem ficar anos sem se dividir, mas retomam a mitose quando há lesão no órgão.",
+  "O DNA de uma célula humana tem cerca de 2 metros de comprimento — e cabe dentro de um núcleo de 6 micrômetros graças à compactação dos cromossomos!",
+  "As células do revestimento estomacal são substituídas a cada 2-9 dias por causa da acidez do suco gástrico.",
+  "Os neurônios e células do músculo cardíaco quase não realizam mitose na vida adulta — por isso lesões nesses tecidos são tão graves.",
+  "A colchicina, extraída do açafrão-do-prado, bloqueia a mitose impedindo a formação do fuso e é usada em pesquisas genéticas para estudar cromossomos.",
+  "Em um embrião de 24 horas, já ocorreram milhares de mitoses desde a fecundação!",
 ];
 
 const keyPoints = [
@@ -196,6 +202,20 @@ const MitosePage = () => {
               color={phase.color}
             />
           ))}
+        </div>
+
+        {/* YouTube Videos */}
+        <div className="max-w-3xl mx-auto mb-16">
+          <div className="flex items-center gap-3 mb-6 justify-center">
+            <Video className="w-5 h-5 text-primary" />
+            <h2 className="font-display text-2xl font-bold text-foreground">
+              Vídeos de Referência
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            <YouTubeEmbed videoId="Wy3N5NCZBHQ" title="Mitose — Khan Academy" />
+            <YouTubeEmbed videoId="f-ldPgEfAHI" title="Mitose — Biologia Total" />
+          </div>
         </div>
 
         {/* Curiosities */}
