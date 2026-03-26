@@ -75,14 +75,27 @@ const allQuestions: QuizQuestionData[] = [
   { question: "A fibra cromossômica de 30nm é formada por:", options: ["DNA nu", "Nucleossomos compactados em solenóide", "Apenas histonas", "RNA e proteínas"], correctIndex: 1 },
 ];
 
-/** Shuffle array using Fisher-Yates and return first `count` items */
+/** Shuffle array using Fisher-Yates and return first `count` items.
+ *  Also randomizes option order so the correct answer isn't always in the same position. */
 function pickRandom(arr: QuizQuestionData[], count: number): QuizQuestionData[] {
   const shuffled = [...arr];
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
-  return shuffled.slice(0, count);
+  return shuffled.slice(0, count).map((q) => {
+    const correctOption = q.options[q.correctIndex];
+    const shuffledOptions = [...q.options];
+    for (let i = shuffledOptions.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]];
+    }
+    return {
+      question: q.question,
+      options: shuffledOptions,
+      correctIndex: shuffledOptions.indexOf(correctOption),
+    };
+  });
 }
 
 export const QUESTIONS_PER_QUIZ = 10;
