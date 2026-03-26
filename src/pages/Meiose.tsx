@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { GitBranch, Circle, Target, ArrowUpDown, SplitSquareVertical, Shuffle, ArrowRight, BookOpen, Dna, Baby, AlertTriangle } from "lucide-react";
+import { GitBranch, Circle, Target, ArrowUpDown, SplitSquareVertical, Shuffle, ArrowRight, BookOpen, Dna, Baby, AlertTriangle, Video } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import PhaseCard from "@/components/PhaseCard";
 import CuriosityCard from "@/components/CuriosityCard";
 import ContentSection from "@/components/ContentSection";
 import CellDivisionDemo from "@/components/CellDivisionDemo";
+import YouTubeEmbed from "@/components/YouTubeEmbed";
 import meiosisImg from "@/assets/meiosis-hero.jpg";
 
 const meiosisI = [
