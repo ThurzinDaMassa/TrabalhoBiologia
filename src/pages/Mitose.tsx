@@ -57,6 +57,11 @@ const curiosidades = [
   "Seu corpo produz cerca de 3,8 milhões de células por segundo através da mitose.",
   "Células cancerosas se dividem descontroladamente por falhas nos mecanismos de controle da mitose.",
   "As células do fígado podem ficar anos sem se dividir, mas retomam a mitose quando há lesão no órgão.",
+  "O DNA de uma célula humana tem cerca de 2 metros de comprimento — e cabe dentro de um núcleo de 6 micrômetros graças à compactação dos cromossomos!",
+  "As células do revestimento estomacal são substituídas a cada 2-9 dias por causa da acidez do suco gástrico.",
+  "Os neurônios e células do músculo cardíaco quase não realizam mitose na vida adulta — por isso lesões nesses tecidos são tão graves.",
+  "A colchicina, extraída do açafrão-do-prado, bloqueia a mitose impedindo a formação do fuso e é usada em pesquisas genéticas para estudar cromossomos.",
+  "Em um embrião de 24 horas, já ocorreram milhares de mitoses desde a fecundação!",
 ];
 
 const keyPoints = [
