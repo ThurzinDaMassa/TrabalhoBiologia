@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { FlaskConical, Circle, Target, ArrowUpDown, SplitSquareVertical, Scissors, ArrowRight, BookOpen, Microscope, HeartPulse, Info } from "lucide-react";
+import { FlaskConical, Circle, Target, ArrowUpDown, SplitSquareVertical, Scissors, ArrowRight, BookOpen, Microscope, HeartPulse, Info, Video } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import PhaseCard from "@/components/PhaseCard";
 import CuriosityCard from "@/components/CuriosityCard";
 import ContentSection from "@/components/ContentSection";
 import CellDivisionDemo from "@/components/CellDivisionDemo";
+import YouTubeEmbed from "@/components/YouTubeEmbed";
 import mitosisImg from "@/assets/mitosis-hero.jpg";
 
 const phases = [
