@@ -306,8 +306,10 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <Dna className="w-5 h-5 text-primary" />
-              <span className="font-display font-bold gradient-text-bio">BioCell</span>
+              <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: "var(--gradient-bio)" }}>
+                <Microscope className="w-4 h-4 text-primary-foreground" />
+              </div>
+              <span className="font-display font-bold gradient-text-bio">CélulaViva</span>
             </div>
             <p className="text-sm text-muted-foreground">
               🧬 Aprendendo biologia celular de forma interativa e visual
