@@ -273,7 +273,9 @@ const CellDivisionDemo = ({ type }: CellDivisionDemoProps) => {
   }, [isPlaying, steps.length]);
 
   return (
-    <div className="glass-card p-6 md:p-8">
+    <div className="glass-card overflow-hidden">
+      <div className="h-1" style={{ background: isMitosis ? "var(--gradient-mitosis)" : "var(--gradient-meiosis)" }} />
+      <div className="p-6 md:p-8">
       <div className="grid md:grid-cols-2 gap-6 items-center">
         {/* Visual */}
         <div className="relative">
