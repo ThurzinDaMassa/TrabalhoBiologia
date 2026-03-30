@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Dna, FlaskConical, GitBranch, BookOpen, Award, Users, Microscope, Sparkles, Zap } from "lucide-react";
+import { ArrowRight, Microscope as MicroscopeIcon, FlaskConical, GitBranch, BookOpen, Award, Users, Microscope, Sparkles, Zap } from "lucide-react";
 import Header from "@/components/Header";
 import heroBg from "@/assets/hero-bg.jpg";
 import mitosisImg from "@/assets/mitosis-hero.jpg";
