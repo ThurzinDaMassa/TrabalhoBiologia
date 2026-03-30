@@ -62,7 +62,7 @@ const PhaseGamePage = () => {
   const reset = () => setKey((k) => k + 1);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-20 md:pb-0">
       <Header />
       <div className="container mx-auto px-4 py-12">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl mx-auto">
