@@ -2,58 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
 
 @layer base {
   :root {
-    --background: 150 20% 97%;
-    --foreground: 200 25% 10%;
+    --background: 40 30% 97%;
+    --foreground: 230 30% 12%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 200 25% 10%;
+    --card: 40 20% 99%;
+    --card-foreground: 230 30% 12%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 200 25% 10%;
+    --popover: 40 20% 99%;
+    --popover-foreground: 230 30% 12%;
 
-    --primary: 160 60% 36%;
+    --primary: 350 65% 52%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 260 45% 55%;
+    --secondary: 230 55% 48%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 150 15% 92%;
-    --muted-foreground: 200 10% 45%;
+    --muted: 40 15% 93%;
+    --muted-foreground: 230 10% 42%;
 
-    --accent: 195 70% 45%;
+    --accent: 170 50% 40%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 150 15% 88%;
-    --input: 150 15% 88%;
-    --ring: 160 60% 36%;
+    --border: 40 15% 88%;
+    --input: 40 15% 88%;
+    --ring: 350 65% 52%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
     /* Custom biology tokens */
-    --cell-green: 145 58% 42%;
-    --cell-purple: 270 50% 50%;
-    --cell-blue: 200 65% 50%;
-    --cell-teal: 175 55% 40%;
-    --cell-pink: 330 60% 55%;
-    --cell-amber: 38 80% 55%;
+    --cell-green: 160 50% 40%;
+    --cell-purple: 260 55% 55%;
+    --cell-blue: 210 60% 50%;
+    --cell-teal: 170 50% 40%;
+    --cell-pink: 350 65% 52%;
+    --cell-amber: 32 85% 55%;
 
-    --gradient-bio: linear-gradient(135deg, hsl(160 60% 36%), hsl(195 70% 45%));
-    --gradient-mitosis: linear-gradient(135deg, hsl(160 60% 36%), hsl(145 58% 42%));
-    --gradient-meiosis: linear-gradient(135deg, hsl(260 45% 55%), hsl(270 50% 50%));
-    --gradient-hero: linear-gradient(135deg, hsl(150 20% 97%), hsl(160 30% 92%));
+    --gradient-bio: linear-gradient(135deg, hsl(350 65% 52%), hsl(280 50% 55%));
+    --gradient-mitosis: linear-gradient(135deg, hsl(350 65% 52%), hsl(20 70% 55%));
+    --gradient-meiosis: linear-gradient(135deg, hsl(230 55% 48%), hsl(280 50% 55%));
+    --gradient-hero: linear-gradient(160deg, hsl(40 30% 97%), hsl(350 30% 95%));
 
-    --shadow-card: 0 4px 24px -4px hsl(160 60% 36% / 0.12);
-    --shadow-hover: 0 8px 32px -4px hsl(160 60% 36% / 0.2);
+    --shadow-card: 0 4px 24px -4px hsl(230 30% 12% / 0.06);
+    --shadow-hover: 0 12px 40px -8px hsl(350 65% 52% / 0.15);
 
-    --font-display: 'Space Grotesk', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-display: 'Outfit', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -66,25 +66,25 @@
   }
 
   .dark {
-    --background: 200 25% 8%;
-    --foreground: 150 15% 92%;
-    --card: 200 20% 12%;
-    --card-foreground: 150 15% 92%;
-    --popover: 200 20% 12%;
-    --popover-foreground: 150 15% 92%;
-    --primary: 160 55% 45%;
+    --background: 230 25% 8%;
+    --foreground: 40 15% 92%;
+    --card: 230 20% 12%;
+    --card-foreground: 40 15% 92%;
+    --popover: 230 20% 12%;
+    --popover-foreground: 40 15% 92%;
+    --primary: 350 60% 58%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 260 45% 60%;
+    --secondary: 230 50% 60%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 200 15% 18%;
-    --muted-foreground: 150 10% 60%;
-    --accent: 195 65% 50%;
+    --muted: 230 15% 18%;
+    --muted-foreground: 40 10% 60%;
+    --accent: 170 45% 50%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 100%;
-    --border: 200 15% 22%;
-    --input: 200 15% 22%;
-    --ring: 160 55% 45%;
+    --border: 230 15% 22%;
+    --input: 230 15% 22%;
+    --ring: 350 60% 58%;
   }
 }
 
@@ -105,7 +105,7 @@
 
 @layer components {
   .glass-card {
-    @apply bg-card/80 backdrop-blur-md border border-border/50 rounded-xl;
+    @apply bg-card/70 backdrop-blur-xl border border-border/40 rounded-2xl;
     box-shadow: var(--shadow-card);
   }
 
@@ -156,8 +156,8 @@
   }
 
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 0 0 hsl(160 60% 36% / 0.4); }
-    50% { box-shadow: 0 0 20px 4px hsl(160 60% 36% / 0.2); }
+    0%, 100% { box-shadow: 0 0 0 0 hsl(350 65% 52% / 0.4); }
+    50% { box-shadow: 0 0 20px 4px hsl(350 65% 52% / 0.15); }
   }
 
   .pulse-glow {
