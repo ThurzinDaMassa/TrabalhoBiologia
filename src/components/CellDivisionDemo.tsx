@@ -371,6 +371,7 @@ const CellDivisionDemo = ({ type }: CellDivisionDemoProps) => {
           </div>
         </div>
       </div>
+      </div>
     </div>
   );
 };
