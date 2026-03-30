@@ -15,25 +15,29 @@ const YouTubeEmbed = ({ videoId, title }: YouTubeEmbedProps) => {
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="glass-card overflow-hidden"
+      className="glass-card overflow-hidden group"
     >
       <div className="relative aspect-video bg-muted">
         {!loaded ? (
           <button
             onClick={() => setLoaded(true)}
-            className="absolute inset-0 flex flex-col items-center justify-center gap-3 group"
+            className="absolute inset-0 flex flex-col items-center justify-center gap-3"
           >
             <img
               src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
               alt={title}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-background/40 group-hover:bg-background/30 transition-colors" />
-            <div className="relative z-10 w-16 h-16 rounded-full bg-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+            <div className="absolute inset-0 bg-foreground/30 group-hover:bg-foreground/20 transition-colors" />
+            <motion.div
+              whileHover={{ scale: 1.15 }}
+              className="relative z-10 w-16 h-16 rounded-full flex items-center justify-center shadow-2xl backdrop-blur-sm"
+              style={{ background: "var(--gradient-bio)" }}
+            >
               <Play className="w-7 h-7 text-primary-foreground ml-1" />
-            </div>
-            <span className="relative z-10 text-sm font-medium text-foreground bg-background/70 px-3 py-1 rounded-lg">
+            </motion.div>
+            <span className="relative z-10 text-sm font-semibold text-primary-foreground bg-foreground/50 backdrop-blur-sm px-4 py-1.5 rounded-xl">
               {title}
             </span>
           </button>
