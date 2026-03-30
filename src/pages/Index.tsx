@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Dna, FlaskConical, GitBranch, BookOpen, Award, Users, Microscope, Sparkles, Zap } from "lucide-react";
+import { ArrowRight, FlaskConical, GitBranch, BookOpen, Award, Users, Microscope, Sparkles, Zap, Dna } from "lucide-react";
 import Header from "@/components/Header";
 import heroBg from "@/assets/hero-bg.jpg";
 import mitosisImg from "@/assets/mitosis-hero.jpg";
@@ -15,7 +15,7 @@ const stats = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-20 md:pb-0">
       <Header />
 
       {/* Hero with background image */}
@@ -43,7 +43,7 @@ const Index = () => {
               transition={{ delay: 0.2 }}
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-8"
             >
-              <Dna className="w-4 h-4 animate-spin" style={{ animationDuration: "3s" }} />
+              <Microscope className="w-4 h-4 animate-spin" style={{ animationDuration: "3s" }} />
               Biologia Celular Interativa
             </motion.div>
 
@@ -306,8 +306,10 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <Dna className="w-5 h-5 text-primary" />
-              <span className="font-display font-bold gradient-text-bio">BioCell</span>
+              <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: "var(--gradient-bio)" }}>
+                <Microscope className="w-4 h-4 text-primary-foreground" />
+              </div>
+              <span className="font-display font-bold gradient-text-bio">CélulaViva</span>
             </div>
             <p className="text-sm text-muted-foreground">
               🧬 Aprendendo biologia celular de forma interativa e visual
