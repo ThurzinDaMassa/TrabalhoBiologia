@@ -52,13 +52,13 @@ const ChromosomePair = ({ x, y, color1, color2, separated, crossed }: { x: numbe
 
 const CellVisual = ({ step, type }: { step: DemoStep; type: "mitosis" | "meiosis" }) => {
   const isMitosis = type === "mitosis";
-  const mainColor = isMitosis ? "hsl(160, 60%, 36%)" : "hsl(260, 45%, 55%)";
-  const bgColor = isMitosis ? "hsl(160, 60%, 36%, 0.08)" : "hsl(260, 45%, 55%, 0.08)";
-  const borderColor = isMitosis ? "hsl(160, 60%, 36%, 0.25)" : "hsl(260, 45%, 55%, 0.25)";
-  const chr1 = "hsl(145, 58%, 42%)";
-  const chr2 = "hsl(200, 65%, 50%)";
-  const chr3 = isMitosis ? "hsl(175, 55%, 40%)" : "hsl(330, 60%, 55%)";
-  const chr4 = isMitosis ? "hsl(38, 80%, 55%)" : "hsl(270, 50%, 50%)";
+  const mainColor = isMitosis ? "hsl(350, 65%, 52%)" : "hsl(230, 55%, 48%)";
+  const bgColor = isMitosis ? "hsl(350, 65%, 52%, 0.06)" : "hsl(230, 55%, 48%, 0.06)";
+  const borderColor = isMitosis ? "hsl(350, 65%, 52%, 0.2)" : "hsl(230, 55%, 48%, 0.2)";
+  const chr1 = "hsl(160, 50%, 40%)";
+  const chr2 = "hsl(210, 60%, 50%)";
+  const chr3 = isMitosis ? "hsl(170, 50%, 40%)" : "hsl(350, 65%, 52%)";
+  const chr4 = isMitosis ? "hsl(32, 85%, 55%)" : "hsl(260, 55%, 55%)";
 
   const renderVisual = () => {
     switch (step.visual) {
