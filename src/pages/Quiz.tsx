@@ -92,9 +92,14 @@ const QuizPage = () => {
                 className="h-full rounded-full"
                 style={{ background: "var(--gradient-bio)" }}
                 animate={{ width: `${(answered / questions.length) * 100}%` }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
               />
             </div>
+            {answered > 0 && !allAnswered && (
+              <p className="text-xs text-muted-foreground mt-2">
+                Continue respondendo — faltam {questions.length - answered} perguntas!
+              </p>
+            )}
           </motion.div>
 
           {/* Questions */}
