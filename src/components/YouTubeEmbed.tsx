@@ -11,33 +11,40 @@ const YouTubeEmbed = ({ videoId, title }: YouTubeEmbedProps) => {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="glass-card overflow-hidden group"
+    <div
+      className="overflow-hidden group"
+      style={{ border: "1px solid hsl(45 10% 12%)", background: "hsl(16 12% 6%)" }}
     >
-      <div className="relative aspect-video bg-muted">
+      <div className="relative aspect-video bg-black">
         {!loaded ? (
           <button
             onClick={() => setLoaded(true)}
-            className="absolute inset-0 flex flex-col items-center justify-center gap-3"
+            className="absolute inset-0 flex flex-col items-center justify-center gap-4 w-full"
           >
             <img
               src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
               alt={title}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className="absolute inset-0 w-full h-full object-cover opacity-50 transition-opacity duration-300 group-hover:opacity-70"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-foreground/30 group-hover:bg-foreground/20 transition-colors" />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to top, hsl(16 14% 4% / 0.8), transparent 50%)" }} />
             <motion.div
-              whileHover={{ scale: 1.15 }}
-              className="relative z-10 w-16 h-16 rounded-full flex items-center justify-center shadow-2xl backdrop-blur-sm"
-              style={{ background: "var(--gradient-bio)" }}
+              whileHover={{ scale: 1.1 }}
+              className="relative z-10 w-14 h-14 flex items-center justify-center"
+              style={{ background: "hsl(42 85% 58%)", borderRadius: "2px" }}
             >
-              <Play className="w-7 h-7 text-primary-foreground ml-1" />
+              <Play className="w-6 h-6 ml-0.5" style={{ color: "hsl(16 14% 4%)" }} />
             </motion.div>
-            <span className="relative z-10 text-sm font-semibold text-primary-foreground bg-foreground/50 backdrop-blur-sm px-4 py-1.5 rounded-xl">
+            <span
+              className="relative z-10 px-3 py-1"
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "0.65rem",
+                letterSpacing: "0.1em",
+                color: "hsl(45 12% 80%)",
+                background: "hsl(16 14% 4% / 0.8)",
+              }}
+            >
               {title}
             </span>
           </button>
@@ -51,7 +58,7 @@ const YouTubeEmbed = ({ videoId, title }: YouTubeEmbedProps) => {
           />
         )}
       </div>
-    </motion.div>
+    </div>
   );
 };
 
