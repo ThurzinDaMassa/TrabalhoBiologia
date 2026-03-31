@@ -37,10 +37,15 @@ function shuffle<T>(arr: T[]): T[] {
   return s;
 }
 
+const catColors = {
+  mitose: { color: "hsl(355 70% 55%)", bg: "hsl(355 20% 7%)", border: "hsl(355 30% 16%)" },
+  meiose: { color: "hsl(185 75% 45%)", bg: "hsl(185 20% 6%)", border: "hsl(185 30% 14%)" },
+  geral: { color: "hsl(42 85% 58%)", bg: "hsl(42 20% 6%)", border: "hsl(42 30% 14%)" },
+};
+
 const FlashcardsPage = () => {
   const [category, setCategory] = useState<"todos" | "mitose" | "meiose" | "geral">("todos");
   const [shuffleKey, setShuffleKey] = useState(0);
-
   const cards = useMemo(() => {
     const filtered = category === "todos" ? allCards : allCards.filter((c) => c.category === category);
     return shuffle(filtered);
@@ -50,26 +55,24 @@ const FlashcardsPage = () => {
   const [flipped, setFlipped] = useState(false);
   const [known, setKnown] = useState<Set<number>>(new Set());
 
-  const currentCard = cards[index];
   const total = cards.length;
   const progress = known.size;
+  const currentCard = cards[index];
+  const catStyle = currentCard ? catColors[currentCard.category] : catColors.geral;
 
   const next = () => {
     setFlipped(false);
     setTimeout(() => setIndex((i) => Math.min(i + 1, total - 1)), 150);
   };
-
   const prev = () => {
     setFlipped(false);
     setTimeout(() => setIndex((i) => Math.max(i - 1, 0)), 150);
   };
-
   const markKnown = () => {
     setKnown((s) => new Set(s).add(index));
     next();
   };
-
-  const reshuffleCards = () => {
+  const reshuffle = () => {
     setShuffleKey((k) => k + 1);
     setIndex(0);
     setFlipped(false);
@@ -77,160 +80,183 @@ const FlashcardsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background pb-20 md:pb-0">
+    <div className="min-h-screen bg-background pb-20 lg:pb-0">
       <Header />
-      <div className="container mx-auto px-4 py-12">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl mx-auto">
-          <div className="text-center mb-10">
-            <motion.div
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-cell-amber/10 border border-cell-amber/20 text-cell-amber text-sm font-medium mb-4"
+
+      {/* HEADER */}
+      <section
+        className="py-16 grid-bg relative overflow-hidden"
+        style={{ borderBottom: "1px solid hsl(45 10% 10%)" }}
+      >
+        <div className="container mx-auto px-4 md:px-8">
+          <span
+            className="block mb-3"
+            style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", letterSpacing: "0.25em", color: "hsl(42 85% 58%)" }}
+          >
+            FERRAMENTA DE ESTUDO
+          </span>
+          <h1
+            className="font-display font-black mb-2"
+            style={{ fontSize: "clamp(3rem, 7vw, 6rem)", lineHeight: 0.9, letterSpacing: "-0.03em", color: "hsl(45 15% 92%)" }}
+          >
+            Flashcards
+          </h1>
+          <p style={{ color: "hsl(45 8% 55%)" }}>
+            {allCards.length} cards — clique para virar e revelar a resposta.
+          </p>
+        </div>
+      </section>
+
+      <div className="container mx-auto px-4 md:px-8 py-12 max-w-2xl">
+
+        {/* Category filter */}
+        <div className="flex gap-1 mb-10 overflow-x-auto pb-1">
+          {(["todos", "mitose", "meiose", "geral"] as const).map((cat) => (
+            <button
+              key={cat}
+              onClick={() => { setCategory(cat); setIndex(0); setFlipped(false); setKnown(new Set()); }}
+              className="crosshair-btn shrink-0"
+              style={{
+                borderColor: category === cat ? "hsl(42 85% 58%)" : undefined,
+                color: category === cat ? "hsl(42 85% 58%)" : undefined,
+                padding: "0.4em 1em",
+                fontSize: "0.65rem"
+              }}
             >
-              <Layers className="w-4 h-4" />
-              Flashcards
-            </motion.div>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Modo Estudo
-            </h1>
-            <p className="text-muted-foreground text-lg">
-              Clique no card para virar e revelar a resposta.
-            </p>
-          </div>
+              <span>{cat.toUpperCase()}</span>
+            </button>
+          ))}
+        </div>
 
-          {/* Category filter */}
-          <div className="flex justify-center gap-1.5 mb-8 bg-muted/60 rounded-xl p-1 border border-border/30 w-fit mx-auto">
-            {(["todos", "mitose", "meiose", "geral"] as const).map((cat) => (
-              <button
-                key={cat}
-                onClick={() => { setCategory(cat); setIndex(0); setFlipped(false); setKnown(new Set()); }}
-                className={`px-4 py-2 rounded-lg text-xs font-medium transition-all capitalize ${
-                  category === cat
-                    ? "bg-primary text-primary-foreground shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+        {/* Progress */}
+        <div
+          className="flex items-center justify-between mb-2"
+          style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", letterSpacing: "0.1em", color: "hsl(45 8% 40%)" }}
+        >
+          <span>CARD {index + 1} / {total}</span>
+          <span style={{ color: "hsl(152 60% 45%)" }}>{progress}/{total} DOMINADOS</span>
+        </div>
+        <div className="prog-bar mb-8">
+          <motion.div
+            className="prog-bar-fill"
+            animate={{ width: `${(progress / total) * 100}%` }}
+            style={{ background: "hsl(152 60% 45%)" }}
+          />
+        </div>
+
+        {/* Card */}
+        {currentCard && (
+          <div className="flashcard-container mb-8" style={{ height: "300px" }}>
+            <div
+              className={`flashcard w-full h-full ${flipped ? "flipped" : ""}`}
+              onClick={() => setFlipped(!flipped)}
+              style={{ height: "300px" }}
+            >
+              {/* Front */}
+              <div
+                className="flashcard-face"
+                style={{
+                  borderColor: catStyle.border,
+                  background: catStyle.bg,
+                  borderTop: `3px solid ${catStyle.color}`,
+                }}
               >
-                {cat}
-              </button>
-            ))}
-          </div>
+                <span
+                  className="mono-badge mb-6"
+                  style={{ color: catStyle.color, borderColor: catStyle.color }}
+                >
+                  {currentCard.category}
+                </span>
+                <h2
+                  className="font-display font-bold text-center"
+                  style={{ fontSize: "1.4rem", color: "hsl(45 12% 85%)", letterSpacing: "-0.01em", lineHeight: 1.25 }}
+                >
+                  {currentCard.front}
+                </h2>
+                <span
+                  className="mt-8"
+                  style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", letterSpacing: "0.15em", color: "hsl(45 8% 40%)" }}
+                >
+                  CLIQUE PARA VIRAR
+                </span>
+              </div>
 
-          {/* Progress */}
-          <div className="flex items-center justify-between mb-4 text-sm text-muted-foreground">
-            <span>{index + 1} / {total}</span>
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-3.5 h-3.5 text-accent" />
-              {progress} dominado{progress !== 1 ? "s" : ""}
-            </span>
-          </div>
-          <div className="w-full h-1.5 bg-muted rounded-full mb-8 overflow-hidden">
-            <motion.div
-              className="h-full rounded-full bg-accent"
-              animate={{ width: `${(progress / total) * 100}%` }}
-              transition={{ type: "spring", stiffness: 300 }}
-            />
-          </div>
-
-          {/* Card */}
-          {currentCard && (
-            <div className="perspective-1000 mb-8">
-              <motion.div
-                onClick={() => setFlipped(!flipped)}
-                className="relative w-full h-72 cursor-pointer"
-                style={{ transformStyle: "preserve-3d" }}
-                animate={{ rotateY: flipped ? 180 : 0 }}
-                transition={{ duration: 0.5, type: "spring", stiffness: 200 }}
+              {/* Back */}
+              <div
+                className="flashcard-face back"
+                style={{ borderColor: catStyle.border }}
               >
-                {/* Front */}
-                <div
-                  className="absolute inset-0 glass-card flex flex-col items-center justify-center p-8 text-center"
-                  style={{ backfaceVisibility: "hidden" }}
+                <p
+                  className="text-center leading-relaxed"
+                  style={{ fontSize: "0.95rem", color: "hsl(45 10% 72%)" }}
                 >
-                  <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium mb-4 ${
-                    currentCard.category === "mitose"
-                      ? "bg-primary/10 text-primary"
-                      : currentCard.category === "meiose"
-                      ? "bg-secondary/10 text-secondary"
-                      : "bg-muted text-muted-foreground"
-                  }`}>
-                    {currentCard.category}
-                  </span>
-                  <h2 className="font-display text-xl md:text-2xl font-bold text-foreground">
-                    {currentCard.front}
-                  </h2>
-                  <p className="text-xs text-muted-foreground mt-4">Clique para virar</p>
-                </div>
-
-                {/* Back */}
-                <div
-                  className="absolute inset-0 glass-card flex flex-col items-center justify-center p-8 text-center"
-                  style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
-                >
-                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-                    {currentCard.back}
-                  </p>
-                </div>
-              </motion.div>
+                  {currentCard.back}
+                </p>
+              </div>
             </div>
-          )}
-
-          {/* Controls */}
-          <div className="flex items-center justify-center gap-3">
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={prev}
-              disabled={index === 0}
-              className="p-3 rounded-xl border border-border hover:bg-muted transition-colors disabled:opacity-30"
-            >
-              <ArrowLeft className="w-5 h-5" />
-            </motion.button>
-
-            <motion.button
-              whileTap={{ scale: 0.95 }}
-              onClick={markKnown}
-              className="px-6 py-3 rounded-xl bg-accent text-accent-foreground font-display font-semibold text-sm flex items-center gap-2"
-            >
-              <CheckCircle2 className="w-4 h-4" />
-              Já sei!
-            </motion.button>
-
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={next}
-              disabled={index === total - 1}
-              className="p-3 rounded-xl border border-border hover:bg-muted transition-colors disabled:opacity-30"
-            >
-              <ArrowRight className="w-5 h-5" />
-            </motion.button>
-
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={reshuffleCards}
-              className="p-3 rounded-xl border border-border hover:bg-muted transition-colors ml-2"
-              title="Embaralhar"
-            >
-              <Shuffle className="w-5 h-5" />
-            </motion.button>
           </div>
+        )}
 
-          {/* All done */}
-          <AnimatePresence>
-            {progress === total && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="glass-card p-8 text-center mt-8"
-              >
-                <div className="text-5xl mb-3">🏆</div>
-                <h3 className="font-display text-2xl font-bold text-accent mb-2">Parabéns!</h3>
-                <p className="text-muted-foreground mb-4">Você dominou todos os flashcards!</p>
-                <button onClick={reshuffleCards} className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-display font-semibold text-sm">
-                  <RotateCcw className="w-4 h-4" /> Recomeçar
-                </button>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
+        {/* Controls */}
+        <div className="flex items-center justify-center gap-2 mb-8">
+          <button
+            onClick={prev}
+            disabled={index === 0}
+            className="crosshair-btn"
+            style={{ padding: "0.5em 0.8em", opacity: index === 0 ? 0.3 : 1 }}
+          >
+            <span><ArrowLeft className="w-4 h-4" /></span>
+          </button>
+
+          <button
+            onClick={markKnown}
+            className="crosshair-btn crosshair-btn-solid"
+            style={{ padding: "0.6em 1.8em", fontSize: "0.72rem" }}
+          >
+            <span className="flex items-center gap-2">
+              <CheckCircle2 className="w-3.5 h-3.5" />
+              Já Sei
+            </span>
+          </button>
+
+          <button
+            onClick={next}
+            disabled={index === total - 1}
+            className="crosshair-btn"
+            style={{ padding: "0.5em 0.8em", opacity: index === total - 1 ? 0.3 : 1 }}
+          >
+            <span><ArrowRight className="w-4 h-4" /></span>
+          </button>
+
+          <button onClick={reshuffle} className="crosshair-btn" style={{ padding: "0.5em 0.8em", marginLeft: "0.5rem" }} title="Embaralhar">
+            <span><Shuffle className="w-4 h-4" /></span>
+          </button>
+        </div>
+
+        {/* All done */}
+        <AnimatePresence>
+          {progress === total && (
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="p-8 text-center"
+              style={{ background: "hsl(16 12% 6%)", border: "1px solid hsl(42 85% 58% / 0.3)", borderTop: "3px solid hsl(42 85% 58%)" }}
+            >
+              <h3 className="font-display font-bold mb-2" style={{ fontSize: "2rem", color: "hsl(42 85% 58%)" }}>
+                Parabéns!
+              </h3>
+              <p className="mb-6" style={{ color: "hsl(45 8% 55%)" }}>
+                Você dominou todos os {total} flashcards desta sessão.
+              </p>
+              <button onClick={reshuffle} className="crosshair-btn crosshair-btn-solid" style={{ padding: "0.7em 2em" }}>
+                <span className="flex items-center gap-2">
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  Recomeçar
+                </span>
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
