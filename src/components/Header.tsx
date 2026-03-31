@@ -1,136 +1,196 @@
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Microscope, Sun, Moon, FlaskConical, GitBranch, GitCompare, Brain, Gamepad2, Home, BookOpen, Layers, Menu, X } from "lucide-react";
+import {
+  Microscope, FlaskConical, GitBranch, GitCompare,
+  Brain, Gamepad2, Home, BookOpen, Layers, X, Menu
+} from "lucide-react";
 import { useState, useEffect } from "react";
 
 const navItems = [
-  { path: "/", label: "Início", icon: <Home className="w-4 h-4" /> },
-  { path: "/mitose", label: "Mitose", icon: <FlaskConical className="w-4 h-4" /> },
-  { path: "/meiose", label: "Meiose", icon: <GitBranch className="w-4 h-4" /> },
-  { path: "/comparacao", label: "Comparação", icon: <GitCompare className="w-4 h-4" /> },
-  { path: "/quiz", label: "Quiz", icon: <Brain className="w-4 h-4" /> },
-  { path: "/jogo", label: "Jogo", icon: <Gamepad2 className="w-4 h-4" /> },
-  { path: "/glossario", label: "Glossário", icon: <BookOpen className="w-4 h-4" /> },
-  { path: "/flashcards", label: "Flashcards", icon: <Layers className="w-4 h-4" /> },
+  { path: "/", label: "Início", short: "Home", icon: <Home className="w-3.5 h-3.5" /> },
+  { path: "/mitose", label: "Mitose", short: "Mitose", icon: <FlaskConical className="w-3.5 h-3.5" /> },
+  { path: "/meiose", label: "Meiose", short: "Meiose", icon: <GitBranch className="w-3.5 h-3.5" /> },
+  { path: "/comparacao", label: "Comparação", short: "Comp.", icon: <GitCompare className="w-3.5 h-3.5" /> },
+  { path: "/quiz", label: "Quiz", short: "Quiz", icon: <Brain className="w-3.5 h-3.5" /> },
+  { path: "/jogo", label: "Jogo", short: "Jogo", icon: <Gamepad2 className="w-3.5 h-3.5" /> },
+  { path: "/glossario", label: "Glossário", short: "Glos.", icon: <BookOpen className="w-3.5 h-3.5" /> },
+  { path: "/flashcards", label: "Flashcards", short: "Cards", icon: <Layers className="w-3.5 h-3.5" /> },
+];
+
+const TICKER_ITEMS = [
+  "DIVISÃO CELULAR", "MITOSE", "MEIOSE", "CROSSING-OVER", "CROMOSSOMOS",
+  "GAMETAS", "INTERFASE", "VARIABILIDADE GENÉTICA", "CENTRÔMERO",
+  "PRÓFASE I", "CITOCINESE", "BIVALENTES", "FUSO MITÓTICO"
 ];
 
 const Header = () => {
   const location = useLocation();
-  const [dark, setDark] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("theme") === "dark" ||
-        (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    }
-    return false;
-  });
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark);
-    localStorage.setItem("theme", dark ? "dark" : "light");
-  }, [dark]);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => { setMenuOpen(false); }, [location.pathname]);
+
+  const tickerText = TICKER_ITEMS.join("  ◆  ");
 
   return (
     <>
-      {/* Desktop top bar */}
-      <header className="sticky top-0 z-50 backdrop-blur-2xl bg-background/70 border-b border-border/30">
-        <div className="container mx-auto px-4 py-2.5 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2.5 group">
-            <motion.div
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.6, type: "spring" }}
-              className="w-9 h-9 rounded-xl flex items-center justify-center"
-              style={{ background: "var(--gradient-bio)" }}
-            >
-              <Microscope className="w-5 h-5 text-primary-foreground" />
-            </motion.div>
-            <span className="font-display font-bold text-lg tracking-tight gradient-text-bio">
-              CélulaViva
-            </span>
-          </Link>
-
-          {/* Desktop nav — pill style */}
-          <nav className="hidden md:flex items-center gap-0.5 bg-muted/60 rounded-2xl p-1 border border-border/30">
-            {navItems.map((item) => {
-              const isActive = location.pathname === item.path;
-              return (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className="relative"
-                >
-                  <motion.div
-                    className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-colors relative z-10 ${
-                      isActive
-                        ? "text-primary-foreground"
-                        : "text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    {item.icon}
-                    {item.label}
-                  </motion.div>
-                  {isActive && (
-                    <motion.div
-                      layoutId="nav-pill"
-                      className="absolute inset-0 rounded-xl"
-                      style={{ background: "var(--gradient-bio)" }}
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
-                    />
-                  )}
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* Theme toggle */}
-          <button
-            onClick={() => setDark(!dark)}
-            className="p-2.5 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted/80 transition-all border border-transparent hover:border-border/50"
-            aria-label="Alternar tema"
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={dark ? "moon" : "sun"}
-                initial={{ rotate: -90, opacity: 0, scale: 0.8 }}
-                animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                exit={{ rotate: 90, opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.2 }}
-              >
-                {dark ? <Sun size={18} /> : <Moon size={18} />}
-              </motion.div>
-            </AnimatePresence>
-          </button>
+      {/* Ticker tape */}
+      <div className="ticker-wrapper relative overflow-hidden" style={{ zIndex: 60 }}>
+        <div className="ticker-content inline-block">
+          {[...Array(4)].map((_, i) => (
+            <span key={i} className="inline-block px-6">{tickerText}</span>
+          ))}
         </div>
+      </div>
+
+      {/* Main nav */}
+      <header
+        className="sticky top-0 z-50 transition-all duration-300"
+        style={{
+          background: scrolled
+            ? "hsl(16 14% 4% / 0.97)"
+            : "hsl(16 14% 4% / 0.85)",
+          backdropFilter: "blur(20px)",
+          borderBottom: "1px solid hsl(45 10% 12%)",
+        }}
+      >
+        {/* Thin gold line at top */}
+        <div
+          className="absolute top-0 left-0 right-0 h-px"
+          style={{ background: "linear-gradient(90deg, transparent, hsl(42 85% 58% / 0.6), transparent)" }}
+        />
+
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="flex items-center justify-between h-14">
+            {/* Logo */}
+            <Link to="/" className="flex items-center gap-2.5 group shrink-0">
+              <motion.div
+                whileHover={{ rotate: -15 }}
+                transition={{ type: "spring", stiffness: 400 }}
+                className="w-8 h-8 flex items-center justify-center"
+                style={{ background: "hsl(42 85% 58%)", borderRadius: "2px" }}
+              >
+                <Microscope className="w-4.5 h-4.5" style={{ color: "hsl(16 14% 4%)" }} />
+              </motion.div>
+              <div>
+                <span
+                  className="font-display font-bold text-lg leading-none block"
+                  style={{ color: "hsl(45 15% 92%)", letterSpacing: "-0.02em" }}
+                >
+                  Célula
+                  <span style={{ color: "hsl(42 85% 58%)" }}>Viva</span>
+                </span>
+                <span
+                  className="text-xs block leading-none mt-0.5 opacity-40"
+                  style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.15em" }}
+                >
+                  BIOLOGIA CELULAR
+                </span>
+              </div>
+            </Link>
+
+            {/* Desktop Nav */}
+            <nav className="hidden lg:flex items-center gap-0">
+              {navItems.map((item) => {
+                const isActive = location.pathname === item.path;
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className={`nav-item ${isActive ? "active" : ""}`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </nav>
+
+            {/* Mobile menu toggle */}
+            <button
+              className="lg:hidden p-2"
+              onClick={() => setMenuOpen(!menuOpen)}
+              style={{ color: "hsl(42 85% 58%)" }}
+            >
+              {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="lg:hidden overflow-hidden"
+              style={{ borderTop: "1px solid hsl(45 10% 12%)" }}
+            >
+              <div className="container mx-auto px-4 py-4 grid grid-cols-2 gap-1">
+                {navItems.map((item) => {
+                  const isActive = location.pathname === item.path;
+                  return (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      className="flex items-center gap-2 px-3 py-2.5"
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: "0.7rem",
+                        letterSpacing: "0.1em",
+                        textTransform: "uppercase",
+                        color: isActive ? "hsl(42 85% 58%)" : "hsl(45 8% 55%)",
+                        borderLeft: isActive ? "2px solid hsl(42 85% 58%)" : "2px solid transparent",
+                        transition: "all 0.15s",
+                      }}
+                    >
+                      {item.icon}
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
-      {/* Mobile bottom tab bar */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-2xl border-t border-border/30 pb-safe">
-        <div className="flex items-center justify-around px-2 py-1.5">
+      {/* Mobile bottom bar */}
+      <nav
+        className="lg:hidden fixed bottom-0 left-0 right-0 z-50"
+        style={{
+          background: "hsl(16 14% 4% / 0.97)",
+          backdropFilter: "blur(20px)",
+          borderTop: "1px solid hsl(45 10% 12%)",
+        }}
+      >
+        <div className="grid grid-cols-8 h-14">
           {navItems.map((item) => {
             const isActive = location.pathname === item.path;
             return (
               <Link
                 key={item.path}
                 to={item.path}
-                className="relative flex flex-col items-center gap-0.5 py-1 px-3"
+                className="flex flex-col items-center justify-center gap-0.5"
+                style={{ color: isActive ? "hsl(42 85% 58%)" : "hsl(45 8% 45%)" }}
               >
-                <motion.div
-                  className={`p-1.5 rounded-xl transition-colors ${
-                    isActive ? "text-primary" : "text-muted-foreground"
-                  }`}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  {isActive && (
-                    <motion.div
-                      layoutId="tab-bg"
-                      className="absolute inset-0 -top-0.5 bg-primary/10 rounded-xl"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
-                    />
-                  )}
-                  <span className="relative z-10">{item.icon}</span>
-                </motion.div>
-                <span className={`text-[10px] font-medium ${isActive ? "text-primary" : "text-muted-foreground"}`}>
-                  {item.label}
+                {item.icon}
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.5rem", letterSpacing: "0.05em" }}>
+                  {item.short}
                 </span>
+                {isActive && (
+                  <motion.div
+                    layoutId="tab-dot"
+                    className="w-1 h-1 rounded-full"
+                    style={{ background: "hsl(42 85% 58%)" }}
+                  />
+                )}
               </Link>
             );
           })}
