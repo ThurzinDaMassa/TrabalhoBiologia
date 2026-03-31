@@ -28,6 +28,8 @@ const App = () => (
           <Route path="/comparacao" element={<ComparisonPage />} />
           <Route path="/quiz" element={<QuizPage />} />
           <Route path="/jogo" element={<PhaseGamePage />} />
+          <Route path="/glossario" element={<GlossaryPage />} />
+          <Route path="/flashcards" element={<FlashcardsPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

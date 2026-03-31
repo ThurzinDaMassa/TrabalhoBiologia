@@ -373,15 +373,17 @@ const Index = () => {
               </div>
               <span className="font-display font-bold text-lg gradient-text-bio">CélulaViva</span>
             </div>
-            <p className="text-sm text-muted-foreground flex items-center gap-1.5">
-              Feito com <Heart className="w-3.5 h-3.5 text-primary fill-primary" /> por Arthur A., Arthur K., Fernando I., Victor P. & Larissa
+            <p className="text-sm text-muted-foreground">
+              © {new Date().getFullYear()} CélulaViva — Biologia Celular Interativa
             </p>
-            <div className="flex gap-5">
+            <div className="flex flex-wrap gap-4">
               <Link to="/mitose" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Mitose</Link>
               <Link to="/meiose" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Meiose</Link>
               <Link to="/comparacao" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Comparação</Link>
               <Link to="/quiz" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Quiz</Link>
               <Link to="/jogo" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Jogo</Link>
+              <Link to="/glossario" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Glossário</Link>
+              <Link to="/flashcards" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Flashcards</Link>
             </div>
           </div>
         </div>
