@@ -237,7 +237,7 @@ const Index = () => {
 
       {/* Features */}
       <section className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
           {[
             {
               icon: <BookOpen className="w-6 h-6" />,
@@ -267,13 +267,27 @@ const Index = () => {
               link: "/jogo",
               color: "bg-secondary/10 text-secondary",
             },
+            {
+              icon: <BookOpen className="w-6 h-6" />,
+              title: "Glossário",
+              desc: "Pesquise termos de biologia celular com definições detalhadas.",
+              link: "/glossario",
+              color: "bg-cell-purple/10 text-cell-purple",
+            },
+            {
+              icon: <Layers className="w-6 h-6" />,
+              title: "Flashcards",
+              desc: "Estude com cards interativos que viram ao clique.",
+              link: "/flashcards",
+              color: "bg-cell-amber/10 text-cell-amber",
+            },
           ].map((item, i) => (
             <Link to={item.link} key={i}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.08 }}
                 whileHover={{ y: -5 }}
                 className="glass-card p-6 h-full group cursor-pointer"
               >
