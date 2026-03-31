@@ -2,138 +2,305 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Instrument+Sans:wght@300;400;500;600&display=swap');
 
 @layer base {
   :root {
-    --background: 40 30% 97%;
-    --foreground: 230 30% 12%;
+    /* === DARK SCIENTIFIC EDITORIAL === */
+    --background: 16 14% 4%;
+    --foreground: 45 15% 92%;
 
-    --card: 40 20% 99%;
-    --card-foreground: 230 30% 12%;
+    --card: 16 12% 7%;
+    --card-foreground: 45 15% 92%;
 
-    --popover: 40 20% 99%;
-    --popover-foreground: 230 30% 12%;
+    --popover: 16 12% 9%;
+    --popover-foreground: 45 15% 92%;
 
-    --primary: 350 65% 52%;
-    --primary-foreground: 0 0% 100%;
+    /* Gold accent system */
+    --primary: 42 85% 58%;
+    --primary-foreground: 16 14% 4%;
 
-    --secondary: 230 55% 48%;
+    /* Crimson/Red for mitosis */
+    --secondary: 355 70% 55%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 40 15% 93%;
-    --muted-foreground: 230 10% 42%;
+    /* Cyan for meiosis */
+    --accent: 185 75% 45%;
+    --accent-foreground: 16 14% 4%;
 
-    --accent: 170 50% 40%;
-    --accent-foreground: 0 0% 100%;
+    --muted: 16 10% 14%;
+    --muted-foreground: 45 8% 55%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 40 15% 88%;
-    --input: 40 15% 88%;
-    --ring: 350 65% 52%;
+    --border: 45 10% 16%;
+    --input: 45 10% 16%;
+    --ring: 42 85% 58%;
 
-    --radius: 1rem;
+    --radius: 0.25rem;
 
-    /* Custom biology tokens */
-    --cell-green: 160 50% 40%;
-    --cell-purple: 260 55% 55%;
-    --cell-blue: 210 60% 50%;
-    --cell-teal: 170 50% 40%;
-    --cell-pink: 350 65% 52%;
-    --cell-amber: 32 85% 55%;
+    /* Biology tokens */
+    --gold: 42 85% 58%;
+    --crimson: 355 70% 55%;
+    --cyan: 185 75% 45%;
+    --emerald: 152 60% 40%;
+    --violet: 262 55% 60%;
+    --amber: 35 90% 55%;
 
-    --gradient-bio: linear-gradient(135deg, hsl(350 65% 52%), hsl(280 50% 55%));
-    --gradient-mitosis: linear-gradient(135deg, hsl(350 65% 52%), hsl(20 70% 55%));
-    --gradient-meiosis: linear-gradient(135deg, hsl(230 55% 48%), hsl(280 50% 55%));
-    --gradient-hero: linear-gradient(160deg, hsl(40 30% 97%), hsl(350 30% 95%));
+    /* Gradients */
+    --grad-gold: linear-gradient(135deg, hsl(42 85% 45%), hsl(38 90% 65%));
+    --grad-crimson: linear-gradient(135deg, hsl(355 70% 45%), hsl(15 80% 55%));
+    --grad-cyan: linear-gradient(135deg, hsl(185 75% 35%), hsl(200 80% 55%));
+    --grad-bio: linear-gradient(135deg, hsl(42 85% 55%), hsl(355 70% 55%), hsl(185 75% 45%));
+    --grad-dark: linear-gradient(180deg, hsl(16 14% 4%) 0%, hsl(16 12% 8%) 100%);
 
-    --shadow-card: 0 4px 24px -4px hsl(230 30% 12% / 0.06);
-    --shadow-hover: 0 12px 40px -8px hsl(350 65% 52% / 0.15);
+    /* Fonts */
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-mono: 'Space Mono', monospace;
+    --font-body: 'Instrument Sans', sans-serif;
 
-    --font-display: 'Outfit', sans-serif;
-    --font-body: 'DM Sans', sans-serif;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar */
+    --sidebar-background: 16 14% 4%;
+    --sidebar-foreground: 45 15% 92%;
+    --sidebar-primary: 42 85% 58%;
+    --sidebar-primary-foreground: 16 14% 4%;
+    --sidebar-accent: 16 12% 10%;
+    --sidebar-accent-foreground: 45 15% 92%;
+    --sidebar-border: 45 10% 16%;
+    --sidebar-ring: 42 85% 58%;
   }
 
-  .dark {
-    --background: 230 25% 8%;
-    --foreground: 40 15% 92%;
-    --card: 230 20% 12%;
-    --card-foreground: 40 15% 92%;
-    --popover: 230 20% 12%;
-    --popover-foreground: 40 15% 92%;
-    --primary: 350 60% 58%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 230 50% 60%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 230 15% 18%;
-    --muted-foreground: 40 10% 60%;
-    --accent: 170 45% 50%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 230 15% 22%;
-    --input: 230 15% 22%;
-    --ring: 350 60% 58%;
+  .light-mode {
+    --background: 50 20% 96%;
+    --foreground: 16 30% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 16 30% 8%;
+    --muted: 45 15% 90%;
+    --muted-foreground: 16 15% 42%;
+    --border: 45 15% 82%;
+    --input: 45 15% 82%;
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-
+  * { @apply border-border; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
+  h1, h2, h3, h4 { font-family: var(--font-display); }
+
+  ::selection {
+    background: hsl(42 85% 58% / 0.3);
+    color: hsl(45 15% 95%);
   }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: hsl(16 14% 6%); }
+  ::-webkit-scrollbar-thumb { background: hsl(42 85% 40%); border-radius: 2px; }
 }
 
 @layer components {
+
+  /* === GLASS CARD — new dark variant === */
   .glass-card {
-    @apply bg-card/70 backdrop-blur-xl border border-border/40 rounded-2xl;
-    box-shadow: var(--shadow-card);
+    background: hsl(16 12% 7% / 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(45 10% 16%);
+    border-radius: 2px;
+    transition: border-color 0.3s, transform 0.2s;
   }
 
   .glass-card:hover {
-    box-shadow: var(--shadow-hover);
+    border-color: hsl(42 85% 35%);
   }
 
-  .gradient-text-bio {
-    background: var(--gradient-bio);
+  /* === RULED CARD — editorial grid lines === */
+  .ruled-card {
+    position: relative;
+    background: hsl(16 12% 6%);
+    border: 1px solid hsl(45 10% 12%);
+    border-top: 3px solid hsl(42 85% 58%);
+  }
+
+  .ruled-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      transparent,
+      transparent 27px,
+      hsl(45 10% 14%) 28px
+    );
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  /* === GRADIENT TEXTS === */
+  .text-gold {
+    background: var(--grad-gold);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .gradient-text-mitosis {
-    background: var(--gradient-mitosis);
+  .text-crimson {
+    background: var(--grad-crimson);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .gradient-text-meiosis {
-    background: var(--gradient-meiosis);
+  .text-cyan-grad {
+    background: var(--grad-cyan);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
+  .text-bio-grad {
+    background: var(--grad-bio);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* === MONO BADGE === */
+  .mono-badge {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.2em 0.7em;
+    border: 1px solid currentColor;
+    border-radius: 0;
+    opacity: 0.8;
+  }
+
+  /* === SECTION RULE — decorative heading line === */
+  .section-rule {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .section-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, hsl(42 85% 58% / 0.4), transparent);
+  }
+
+  /* === TICK LIST === */
+  .tick-list li {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  .tick-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: hsl(42 85% 58%);
+    font-family: var(--font-mono);
+    font-size: 0.8em;
+  }
+
+  /* === PHASE STEP === */
+  .phase-step {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 0 1rem;
+    align-items: start;
+  }
+
+  /* === CROSSHAIR BUTTON === */
+  .crosshair-btn {
+    position: relative;
+    background: transparent;
+    border: 1px solid hsl(42 85% 58% / 0.5);
+    color: hsl(42 85% 58%);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.7em 1.5em;
+    cursor: pointer;
+    transition: all 0.2s;
+    overflow: hidden;
+  }
+
+  .crosshair-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: hsl(42 85% 58%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease;
+    z-index: 0;
+  }
+
+  .crosshair-btn:hover::before { transform: scaleX(1); }
+  .crosshair-btn:hover { color: hsl(16 14% 4%); }
+  .crosshair-btn span { position: relative; z-index: 1; }
+
+  .crosshair-btn-solid {
+    background: hsl(42 85% 58%);
+    color: hsl(16 14% 4%);
+    border-color: hsl(42 85% 58%);
+  }
+
+  .crosshair-btn-solid::before { background: hsl(16 14% 4%); }
+  .crosshair-btn-solid:hover { color: hsl(42 85% 58%); }
+
+  .crosshair-btn-red {
+    border-color: hsl(355 70% 55% / 0.5);
+    color: hsl(355 70% 65%);
+  }
+  .crosshair-btn-red::before { background: hsl(355 70% 55%); }
+  .crosshair-btn-red:hover { color: white; }
+
+  .crosshair-btn-cyan {
+    border-color: hsl(185 75% 45% / 0.5);
+    color: hsl(185 75% 55%);
+  }
+  .crosshair-btn-cyan::before { background: hsl(185 75% 45%); }
+  .crosshair-btn-cyan:hover { color: hsl(16 14% 4%); }
+
+  /* === STAT BLOCK === */
+  .stat-block {
+    border-left: 3px solid hsl(42 85% 58%);
+    padding-left: 1rem;
+  }
+
+  /* === NOISE TEXTURE === */
+  .noise::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.6;
+    border-radius: inherit;
+  }
+
+  /* === GRID BG === */
+  .grid-bg {
+    background-image:
+      linear-gradient(hsl(45 10% 16% / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(45 10% 16% / 0.3) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* === CELL BLOB (kept for compatibility) === */
   .cell-blob {
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     animation: blob-morph 8s ease-in-out infinite;
@@ -146,25 +313,235 @@
     75% { border-radius: 60% 30% 60% 40% / 70% 40% 50% 60%; }
   }
 
-  @keyframes chromosome-move {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-8px) rotate(5deg); }
+  /* === SCAN LINE ANIMATION === */
+  @keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
   }
 
-  .chromosome-float {
-    animation: chromosome-move 3s ease-in-out infinite;
+  .scan-line {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(42 85% 58% / 0.15), transparent);
+    animation: scan 8s linear infinite;
+    pointer-events: none;
+    z-index: 9999;
   }
 
-  @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 0 0 hsl(350 65% 52% / 0.4); }
-    50% { box-shadow: 0 0 20px 4px hsl(350 65% 52% / 0.15); }
+  /* === TICKER === */
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 
-  .pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
+  .ticker-content {
+    animation: ticker 30s linear infinite;
+    white-space: nowrap;
   }
 
-  .perspective-1000 {
-    perspective: 1000px;
+  /* === CURSOR CROSSHAIR === */
+  .has-crosshair { cursor: crosshair; }
+
+  /* === NAV STYLES === */
+  .nav-item {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: hsl(45 8% 50%);
+    padding: 0.4em 0.8em;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .nav-item:hover, .nav-item.active {
+    color: hsl(42 85% 58%);
+    border-color: hsl(42 85% 58% / 0.3);
+  }
+
+  .nav-item.active::before {
+    content: '●';
+    position: absolute;
+    left: -1rem;
+    font-size: 0.4em;
+    top: 50%;
+    transform: translateY(-50%);
+    color: hsl(42 85% 58%);
+  }
+
+  /* === PHASE NUMBER === */
+  .phase-num {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: hsl(42 85% 58%);
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+
+  /* === COMPARISON TABLE === */
+  .comp-table th {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 1rem 1.5rem;
+    border-bottom: 2px solid hsl(45 10% 16%);
+  }
+
+  .comp-table td {
+    padding: 0.9rem 1.5rem;
+    border-bottom: 1px solid hsl(45 10% 10%);
+    font-size: 0.875rem;
+  }
+
+  .comp-table tr:hover td { background: hsl(45 10% 8%); }
+
+  /* === PROGRESS BAR === */
+  .prog-bar {
+    height: 2px;
+    background: hsl(45 10% 14%);
+    overflow: hidden;
+  }
+  .prog-bar-fill {
+    height: 100%;
+    background: var(--grad-gold);
+    transition: width 0.5s ease;
+  }
+
+  /* === CARD VARIANTS === */
+  .card-mitosis {
+    border-top: 2px solid hsl(355 70% 55%);
+    background: hsl(355 20% 6%);
+  }
+
+  .card-meiosis {
+    border-top: 2px solid hsl(185 75% 45%);
+    background: hsl(185 20% 6%);
+  }
+
+  /* === QUIZ OPTION === */
+  .quiz-option {
+    background: transparent;
+    border: 1px solid hsl(45 10% 16%);
+    text-align: left;
+    width: 100%;
+    padding: 0.85rem 1.1rem;
+    font-size: 0.875rem;
+    transition: all 0.18s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: hsl(45 8% 65%);
+  }
+
+  .quiz-option:hover:not(:disabled) {
+    border-color: hsl(42 85% 58% / 0.5);
+    color: hsl(45 15% 88%);
+    background: hsl(42 85% 58% / 0.04);
+  }
+
+  .quiz-option.correct {
+    border-color: hsl(152 60% 40%);
+    background: hsl(152 60% 40% / 0.08);
+    color: hsl(152 60% 60%);
+  }
+
+  .quiz-option.wrong {
+    border-color: hsl(355 70% 55%);
+    background: hsl(355 70% 55% / 0.08);
+    color: hsl(355 70% 65%);
+  }
+
+  /* === FLASHCARD === */
+  .flashcard-container { perspective: 1200px; }
+
+  .flashcard {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+
+  .flashcard.flipped { transform: rotateY(180deg); }
+
+  .flashcard-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem;
+    background: hsl(16 12% 7%);
+    border: 1px solid hsl(45 10% 16%);
+  }
+
+  .flashcard-face.back {
+    transform: rotateY(180deg);
+    background: hsl(16 12% 9%);
+    border-color: hsl(42 85% 58% / 0.25);
+  }
+
+  /* === GAME PHASE CHIP === */
+  .phase-chip {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    padding: 0.35em 0.8em;
+    border: 1px solid hsl(45 10% 20%);
+    background: hsl(16 12% 9%);
+    color: hsl(45 8% 60%);
+    cursor: pointer;
+    letter-spacing: 0.08em;
+    transition: all 0.15s;
+  }
+
+  .phase-chip:hover:not(.selected):not(.placed) {
+    border-color: hsl(42 85% 58% / 0.5);
+    color: hsl(42 85% 68%);
+  }
+
+  .phase-chip.selected {
+    border-color: hsl(185 75% 45%);
+    color: hsl(185 75% 65%);
+    background: hsl(185 75% 45% / 0.08);
+  }
+
+  .phase-chip.placed {
+    border-color: hsl(152 60% 40%);
+    color: hsl(152 60% 55%);
+    background: hsl(152 60% 40% / 0.08);
+    opacity: 0.6;
+  }
+
+  /* === PERSPECTIVE === */
+  .perspective-1000 { perspective: 1000px; }
+
+  /* === GRADIENTS preserved from old === */
+  .gradient-text-bio { background: var(--grad-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .gradient-text-mitosis { background: var(--grad-crimson); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .gradient-text-meiosis { background: var(--grad-cyan); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  /* Legacy gradient vars */
+  --gradient-bio: var(--grad-gold);
+  --gradient-mitosis: var(--grad-crimson);
+  --gradient-meiosis: var(--grad-cyan);
+
+  /* === TICKER WRAPPER === */
+  .ticker-wrapper {
+    overflow: hidden;
+    background: hsl(42 85% 58%);
+    color: hsl(16 14% 4%);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.4rem 0;
   }
 }
+
