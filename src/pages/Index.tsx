@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, FlaskConical, GitBranch, BookOpen, Award, Users, Microscope, Sparkles, Zap, Dna, Gamepad2, Heart } from "lucide-react";
+import { ArrowRight, FlaskConical, GitBranch, BookOpen, Award, Users, Microscope, Sparkles, Zap, Dna, Gamepad2, Layers } from "lucide-react";
 import Header from "@/components/Header";
 import heroBg from "@/assets/hero-bg.jpg";
 import mitosisImg from "@/assets/mitosis-hero.jpg";
@@ -237,7 +237,7 @@ const Index = () => {
 
       {/* Features */}
       <section className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
           {[
             {
               icon: <BookOpen className="w-6 h-6" />,
@@ -267,13 +267,27 @@ const Index = () => {
               link: "/jogo",
               color: "bg-secondary/10 text-secondary",
             },
+            {
+              icon: <BookOpen className="w-6 h-6" />,
+              title: "Glossário",
+              desc: "Pesquise termos de biologia celular com definições detalhadas.",
+              link: "/glossario",
+              color: "bg-cell-purple/10 text-cell-purple",
+            },
+            {
+              icon: <Layers className="w-6 h-6" />,
+              title: "Flashcards",
+              desc: "Estude com cards interativos que viram ao clique.",
+              link: "/flashcards",
+              color: "bg-cell-amber/10 text-cell-amber",
+            },
           ].map((item, i) => (
             <Link to={item.link} key={i}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.08 }}
                 whileHover={{ y: -5 }}
                 className="glass-card p-6 h-full group cursor-pointer"
               >
@@ -373,15 +387,17 @@ const Index = () => {
               </div>
               <span className="font-display font-bold text-lg gradient-text-bio">CélulaViva</span>
             </div>
-            <p className="text-sm text-muted-foreground flex items-center gap-1.5">
-              Feito com <Heart className="w-3.5 h-3.5 text-primary fill-primary" /> por Arthur A., Arthur K., Fernando I., Victor P. & Larissa
+            <p className="text-sm text-muted-foreground">
+              © {new Date().getFullYear()} CélulaViva — Biologia Celular Interativa
             </p>
-            <div className="flex gap-5">
+            <div className="flex flex-wrap gap-4">
               <Link to="/mitose" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Mitose</Link>
               <Link to="/meiose" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Meiose</Link>
               <Link to="/comparacao" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Comparação</Link>
               <Link to="/quiz" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Quiz</Link>
               <Link to="/jogo" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Jogo</Link>
+              <Link to="/glossario" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Glossário</Link>
+              <Link to="/flashcards" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Flashcards</Link>
             </div>
           </div>
         </div>

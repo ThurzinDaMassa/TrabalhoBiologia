@@ -9,6 +9,8 @@ import MeiosePage from "./pages/Meiose.tsx";
 import ComparisonPage from "./pages/Comparison.tsx";
 import QuizPage from "./pages/Quiz.tsx";
 import PhaseGamePage from "./pages/PhaseGame.tsx";
+import GlossaryPage from "./pages/Glossary.tsx";
+import FlashcardsPage from "./pages/Flashcards.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -26,6 +28,8 @@ const App = () => (
           <Route path="/comparacao" element={<ComparisonPage />} />
           <Route path="/quiz" element={<QuizPage />} />
           <Route path="/jogo" element={<PhaseGamePage />} />
+          <Route path="/glossario" element={<GlossaryPage />} />
+          <Route path="/flashcards" element={<FlashcardsPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
