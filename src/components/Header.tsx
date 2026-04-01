@@ -2,7 +2,8 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Microscope, FlaskConical, GitBranch, GitCompare,
-  Brain, Gamepad2, Home, BookOpen, Layers, X, Menu
+  Brain, Gamepad2, Home, BookOpen, Layers, X, Menu,
+  Network, FileText
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -11,8 +12,10 @@ const navItems = [
   { path: "/mitose", label: "Mitose", short: "Mitose", icon: <FlaskConical className="w-3.5 h-3.5" /> },
   { path: "/meiose", label: "Meiose", short: "Meiose", icon: <GitBranch className="w-3.5 h-3.5" /> },
   { path: "/comparacao", label: "Comparação", short: "Comp.", icon: <GitCompare className="w-3.5 h-3.5" /> },
+  { path: "/resumo", label: "Resumo", short: "Res.", icon: <FileText className="w-3.5 h-3.5" /> },
   { path: "/quiz", label: "Quiz", short: "Quiz", icon: <Brain className="w-3.5 h-3.5" /> },
   { path: "/jogo", label: "Jogo", short: "Jogo", icon: <Gamepad2 className="w-3.5 h-3.5" /> },
+  { path: "/mapa", label: "Mapa", short: "Mapa", icon: <Network className="w-3.5 h-3.5" /> },
   { path: "/glossario", label: "Glossário", short: "Glos.", icon: <BookOpen className="w-3.5 h-3.5" /> },
   { path: "/flashcards", label: "Flashcards", short: "Cards", icon: <Layers className="w-3.5 h-3.5" /> },
 ];
@@ -95,15 +98,15 @@ const Header = () => {
               </div>
             </Link>
 
-            {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-0">
+            {/* Desktop Nav — scrollable on smaller screens */}
+            <nav className="hidden lg:flex items-center gap-0 overflow-x-auto">
               {navItems.map((item) => {
                 const isActive = location.pathname === item.path;
                 return (
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`nav-item ${isActive ? "active" : ""}`}
+                    className={`nav-item whitespace-nowrap ${isActive ? "active" : ""}`}
                   >
                     {item.label}
                   </Link>
@@ -122,7 +125,7 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile dropdown menu */}
         <AnimatePresence>
           {menuOpen && (
             <motion.div
@@ -161,7 +164,7 @@ const Header = () => {
         </AnimatePresence>
       </header>
 
-      {/* Mobile bottom bar */}
+      {/* Mobile bottom bar — 5 most important items */}
       <nav
         className="lg:hidden fixed bottom-0 left-0 right-0 z-50"
         style={{
@@ -170,8 +173,8 @@ const Header = () => {
           borderTop: "1px solid hsl(45 10% 12%)",
         }}
       >
-        <div className="grid grid-cols-8 h-14">
-          {navItems.map((item) => {
+        <div className="grid grid-cols-5 h-14">
+          {[navItems[0], navItems[1], navItems[2], navItems[4], navItems[5]].map((item) => {
             const isActive = location.pathname === item.path;
             return (
               <Link
