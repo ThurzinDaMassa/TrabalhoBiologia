@@ -388,7 +388,7 @@ const Index = () => {
               <span className="font-display font-bold text-lg gradient-text-bio">AflavScience</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} CélulaViva — Biologia Celular Interativa
+              © {new Date().getFullYear()} AflavScience — Biologia Celular Interativa
             </p>
             <div className="flex flex-wrap gap-4">
               <Link to="/mitose" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Mitose</Link>

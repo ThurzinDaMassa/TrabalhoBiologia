@@ -44,7 +44,7 @@ const Header = () => {
               <Microscope className="w-5 h-5 text-primary-foreground" />
             </motion.div>
             <span className="font-display font-bold text-lg tracking-tight gradient-text-bio">
-              CélulaViva
+              AflavScience
             </span>
           </Link>
 

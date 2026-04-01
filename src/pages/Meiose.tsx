@@ -269,7 +269,7 @@ const MeiosePage = () => {
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-4">
-            <YouTubeEmbed videoId="nMakmH1hMCg" title="Meiose — Khan Academy" />
+            <YouTubeEmbed videoId="jM3wO11czO8" title="Meiose — Brasil Escola" />
             <YouTubeEmbed videoId="VzDMG7ke69g" title="Meiose — Biologia Total" />
           </div>
         </div>
