@@ -681,7 +681,7 @@ const Index = () => {
       >
         <div className="container mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.65rem", letterSpacing: "0.1em", color: "hsl(45 8% 35%)" }}>
-            © {new Date().getFullYear()} CÉLULAVIVA — BIOLOGIA CELULAR INTERATIVA
+            © {new Date().getFullYear()} AFLAV SCIENCE — BIOLOGIA CELULAR INTERATIVA
           </span>
           <div className="flex gap-6">
             {["/mitose", "/meiose", "/comparacao", "/quiz", "/glossario"].map((path) => (
