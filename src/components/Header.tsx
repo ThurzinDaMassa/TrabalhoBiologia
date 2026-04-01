@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Microscope, Sun, Moon, FlaskConical, GitBranch, GitCompare, Brain, Gamepad2, Home, BookOpen, Layers, Menu, X } from "lucide-react";
+import { Microscope, Sun, Moon, FlaskConical, GitBranch, GitCompare, Brain, Gamepad2, Home, BookOpen, Layers, Clock } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const navItems = [
@@ -12,6 +12,7 @@ const navItems = [
   { path: "/jogo", label: "Jogo", icon: <Gamepad2 className="w-4 h-4" /> },
   { path: "/glossario", label: "Glossário", icon: <BookOpen className="w-4 h-4" /> },
   { path: "/flashcards", label: "Flashcards", icon: <Layers className="w-4 h-4" /> },
+  { path: "/timeline", label: "Timeline", icon: <Clock className="w-4 h-4" /> },
 ];
 
 const Header = () => {
