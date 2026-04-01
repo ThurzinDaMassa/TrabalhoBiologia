@@ -281,6 +281,13 @@ const Index = () => {
               link: "/flashcards",
               color: "bg-cell-amber/10 text-cell-amber",
             },
+            {
+              icon: <Clock className="w-6 h-6" />,
+              title: "Linha do Tempo",
+              desc: "Visualize o ciclo celular com tempos reais de cada fase.",
+              link: "/timeline",
+              color: "bg-accent/10 text-accent",
+            },
           ].map((item, i) => (
             <Link to={item.link} key={i}>
               <motion.div
