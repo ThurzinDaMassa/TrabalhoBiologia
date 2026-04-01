@@ -385,7 +385,7 @@ const Index = () => {
               <div className="w-8 h-8 rounded-xl flex items-center justify-center" style={{ background: "var(--gradient-bio)" }}>
                 <Microscope className="w-4 h-4 text-primary-foreground" />
               </div>
-              <span className="font-display font-bold text-lg gradient-text-bio">CélulaViva</span>
+              <span className="font-display font-bold text-lg gradient-text-bio">AflavScience</span>
             </div>
             <p className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} CélulaViva — Biologia Celular Interativa
