@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, FlaskConical, GitBranch, BookOpen, Award, Users, Microscope, Sparkles, Zap, Dna, Gamepad2, Layers } from "lucide-react";
+import { ArrowRight, FlaskConical, GitBranch, BookOpen, Award, Users, Microscope, Sparkles, Zap, Dna, Gamepad2, Layers, Clock } from "lucide-react";
 import Header from "@/components/Header";
 import heroBg from "@/assets/hero-bg.jpg";
 import mitosisImg from "@/assets/mitosis-hero.jpg";
@@ -281,6 +281,13 @@ const Index = () => {
               link: "/flashcards",
               color: "bg-cell-amber/10 text-cell-amber",
             },
+            {
+              icon: <Clock className="w-6 h-6" />,
+              title: "Linha do Tempo",
+              desc: "Visualize o ciclo celular com tempos reais de cada fase.",
+              link: "/timeline",
+              color: "bg-accent/10 text-accent",
+            },
           ].map((item, i) => (
             <Link to={item.link} key={i}>
               <motion.div
@@ -385,10 +392,10 @@ const Index = () => {
               <div className="w-8 h-8 rounded-xl flex items-center justify-center" style={{ background: "var(--gradient-bio)" }}>
                 <Microscope className="w-4 h-4 text-primary-foreground" />
               </div>
-              <span className="font-display font-bold text-lg gradient-text-bio">CélulaViva</span>
+              <span className="font-display font-bold text-lg gradient-text-bio">AflavScience</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} CélulaViva — Biologia Celular Interativa
+              © {new Date().getFullYear()} AflavScience — Biologia Celular Interativa
             </p>
             <div className="flex flex-wrap gap-4">
               <Link to="/mitose" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Mitose</Link>

@@ -213,7 +213,7 @@ const MitosePage = () => {
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-4">
-            <YouTubeEmbed videoId="Wy3N5NCZBHQ" title="Mitose — Khan Academy" />
+            <YouTubeEmbed videoId="LjS8MXzsuao" title="Mitose — Brasil Escola" />
             <YouTubeEmbed videoId="f-ldPgEfAHI" title="Mitose — Biologia Total" />
           </div>
         </div>

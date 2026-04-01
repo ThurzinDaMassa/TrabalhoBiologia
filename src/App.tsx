@@ -11,6 +11,7 @@ import QuizPage from "./pages/Quiz.tsx";
 import PhaseGamePage from "./pages/PhaseGame.tsx";
 import GlossaryPage from "./pages/Glossary.tsx";
 import FlashcardsPage from "./pages/Flashcards.tsx";
+import StudyTimelinePage from "./pages/StudyTimeline.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/jogo" element={<PhaseGamePage />} />
           <Route path="/glossario" element={<GlossaryPage />} />
           <Route path="/flashcards" element={<FlashcardsPage />} />
+          <Route path="/timeline" element={<StudyTimelinePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
