@@ -235,7 +235,24 @@ const QuizPage = () => {
                   border: "1px solid hsl(45 10% 12%)",
                 }}
               >
-                <div className="px-6 py-5" style={{ borderBottom: "1px solid hsl(45 10% 10%)" }}>
+              <div className="px-6 py-5" style={{ borderBottom: "1px solid hsl(45 10% 10%)" }}>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: "0.55rem",
+                        letterSpacing: "0.15em",
+                        padding: "0.25em 0.7em",
+                        fontWeight: 700,
+                        textTransform: "uppercase",
+                        border: `1px solid ${q.difficulty === "fácil" ? "hsl(152 60% 45%)" : q.difficulty === "médio" ? "hsl(42 85% 55%)" : "hsl(355 70% 55%)"}`,
+                        color: q.difficulty === "fácil" ? "hsl(152 60% 55%)" : q.difficulty === "médio" ? "hsl(42 85% 65%)" : "hsl(355 70% 65%)",
+                        background: q.difficulty === "fácil" ? "hsl(152 60% 45% / 0.1)" : q.difficulty === "médio" ? "hsl(42 85% 55% / 0.1)" : "hsl(355 70% 55% / 0.1)",
+                      }}
+                    >
+                      {q.difficulty}
+                    </span>
+                  </div>
                   <p
                     className="font-display font-semibold"
                     style={{ fontSize: "1.1rem", color: "hsl(45 12% 88%)", lineHeight: 1.5 }}
