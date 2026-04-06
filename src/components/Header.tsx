@@ -86,8 +86,8 @@ const Header = () => {
                   className="font-display font-bold text-lg leading-none block"
                   style={{ color: "hsl(45 15% 92%)", letterSpacing: "-0.02em" }}
                 >
-                  Célula
-                  <span style={{ color: "hsl(42 85% 58%)" }}>Viva</span>
+                  Aflav
+                  <span style={{ color: "hsl(42 85% 58%)" }}>Science</span>
                 </span>
                 <span
                   className="text-xs block leading-none mt-0.5 opacity-40"
