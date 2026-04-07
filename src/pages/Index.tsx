@@ -23,11 +23,11 @@ const features = [
 ];
 
 const authors = [
-  { name: "Arthur A.", role: "Pesquisa", n: "01" },
-  { name: "Arthur K.", role: "Design", n: "02" },
-  { name: "Fernando I.", role: "Dev", n: "03" },
-  { name: "Victor P.", role: "Mídia", n: "04" },
-  { name: "Larissa", role: "Revisão", n: "05" },
+  { name: "Arthur A.", n: "01" },
+  { name: "Arthur K.", n: "02" },
+  { name: "Fernando I.", n: "03" },
+  { name: "Victor P.", n: "04" },
+  { name: "Larissa", n: "05" },
 ];
 
 const Index = () => {
@@ -664,9 +664,6 @@ const Index = () => {
                 </div>
                 <div style={{ fontFamily: "var(--font-display)", fontSize: "1.1rem", color: "hsl(45 12% 80%)", fontWeight: 700, lineHeight: 1.1, marginLeft: i > 0 ? "1.5rem" : 0 }}>
                   {a.name}
-                </div>
-                <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", color: "hsl(45 8% 40%)", letterSpacing: "0.1em", marginLeft: i > 0 ? "1.5rem" : 0 }}>
-                  {a.role.toUpperCase()}
                 </div>
               </motion.div>
             ))}
