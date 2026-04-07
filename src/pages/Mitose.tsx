@@ -152,55 +152,72 @@ const MitosePage = () => {
           style={{ background: "radial-gradient(ellipse at 30% 50%, hsl(355 70% 25% / 0.18), transparent 60%)" }}
         />
         <div className="container mx-auto px-4 md:px-8 relative z-10">
-          <div className="max-w-3xl">
-            <span
-              className="block mb-4"
-              style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", letterSpacing: "0.25em", color: "hsl(355 70% 55%)" }}
-            >
-              MÓDULO 01 — DIVISÃO CELULAR
-            </span>
-            <h1
-              className="font-display font-black mb-6"
-              style={{
-                fontSize: "clamp(4rem, 10vw, 9rem)",
-                lineHeight: 0.9,
-                letterSpacing: "-0.04em",
-                color: "hsl(355 50% 80%)",
-              }}
-            >
-              Mitose
-            </h1>
-            <p
-              className="max-w-xl leading-relaxed mb-8"
-              style={{ color: "hsl(45 8% 58%)", fontSize: "1rem" }}
-            >
-              A divisão equacional que garante que cada célula-filha receba uma cópia
-              completa e exata do material genético. Fundamento do crescimento e reparo.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-3xl">
+              <span
+                className="block mb-4"
+                style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", letterSpacing: "0.25em", color: "hsl(355 70% 55%)" }}
+              >
+                MÓDULO 01 — DIVISÃO CELULAR
+              </span>
+              <h1
+                className="font-display font-black mb-6"
+                style={{
+                  fontSize: "clamp(4rem, 10vw, 9rem)",
+                  lineHeight: 0.9,
+                  letterSpacing: "-0.04em",
+                  color: "hsl(355 50% 80%)",
+                }}
+              >
+                Mitose
+              </h1>
+              <p
+                className="max-w-xl leading-relaxed mb-8"
+                style={{ color: "hsl(45 8% 58%)", fontSize: "1rem" }}
+              >
+                A divisão equacional que garante que cada célula-filha receba uma cópia
+                completa e exata do material genético. Fundamento do crescimento e reparo.
+              </p>
 
-            {/* Key stats row */}
-            <div className="flex flex-wrap gap-8">
-              {[
-                { v: "2", l: "Células-filhas" },
-                { v: "2n", l: "Diploide" },
-                { v: "5", l: "Fases" },
-                { v: "Idênticas", l: "Geneticamente" },
-              ].map((s, i) => (
-                <div key={i} className="stat-block">
-                  <div
-                    className="font-display font-bold"
-                    style={{ fontSize: "1.8rem", lineHeight: 1, color: "hsl(355 55% 70%)" }}
-                  >
-                    {s.v}
+              {/* Key stats row */}
+              <div className="flex flex-wrap gap-8">
+                {[
+                  { v: "2", l: "Células-filhas" },
+                  { v: "2n", l: "Diploide" },
+                  { v: "5", l: "Fases" },
+                  { v: "Idênticas", l: "Geneticamente" },
+                ].map((s, i) => (
+                  <div key={i} className="stat-block">
+                    <div
+                      className="font-display font-bold"
+                      style={{ fontSize: "1.8rem", lineHeight: 1, color: "hsl(355 55% 70%)" }}
+                    >
+                      {s.v}
+                    </div>
+                    <div
+                      style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", letterSpacing: "0.1em", color: "hsl(45 8% 45%)" }}
+                    >
+                      {s.l.toUpperCase()}
+                    </div>
                   </div>
-                  <div
-                    style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", letterSpacing: "0.1em", color: "hsl(45 8% 45%)" }}
-                  >
-                    {s.l.toUpperCase()}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="hidden lg:block"
+            >
+              <img
+                src={mitosisHero}
+                alt="Ilustração do processo de mitose mostrando divisão celular"
+                className="w-full max-w-md mx-auto rounded-lg"
+                style={{ border: "1px solid hsl(355 30% 15%)", boxShadow: "0 20px 60px -15px hsl(355 70% 15% / 0.5)" }}
+                width={1024}
+                height={576}
+              />
+            </motion.div>
           </div>
         </div>
       </section>
