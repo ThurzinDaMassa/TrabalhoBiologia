@@ -9,6 +9,7 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import CellDivisionDemo from "@/components/CellDivisionDemo";
 import YouTubeEmbed from "@/components/YouTubeEmbed";
+import meiosisHero from "@/assets/meiosis-hero.jpg";
 
 const allPhases = [
   // MEIOSE I
@@ -196,49 +197,66 @@ const MeiosePage = () => {
           style={{ background: "radial-gradient(ellipse at 30% 50%, hsl(185 75% 20% / 0.2), transparent 60%)" }}
         />
         <div className="container mx-auto px-4 md:px-8 relative z-10">
-          <div className="max-w-3xl">
-            <span
-              className="block mb-4"
-              style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", letterSpacing: "0.25em", color: "hsl(185 75% 45%)" }}
-            >
-              MÓDULO 02 — DIVISÃO CELULAR
-            </span>
-            <h1
-              className="font-display font-black mb-6"
-              style={{
-                fontSize: "clamp(4rem, 10vw, 9rem)",
-                lineHeight: 0.9,
-                letterSpacing: "-0.04em",
-                color: "hsl(185 50% 78%)",
-              }}
-            >
-              Meiose
-            </h1>
-            <p
-              className="max-w-xl leading-relaxed mb-8"
-              style={{ color: "hsl(45 8% 58%)", fontSize: "1rem" }}
-            >
-              A divisão reducional que garante a variabilidade genética e a continuidade das espécies sexuadas —
-              produzindo 4 gametas únicos a partir de uma única célula.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-3xl">
+              <span
+                className="block mb-4"
+                style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", letterSpacing: "0.25em", color: "hsl(185 75% 45%)" }}
+              >
+                MÓDULO 02 — DIVISÃO CELULAR
+              </span>
+              <h1
+                className="font-display font-black mb-6"
+                style={{
+                  fontSize: "clamp(4rem, 10vw, 9rem)",
+                  lineHeight: 0.9,
+                  letterSpacing: "-0.04em",
+                  color: "hsl(185 50% 78%)",
+                }}
+              >
+                Meiose
+              </h1>
+              <p
+                className="max-w-xl leading-relaxed mb-8"
+                style={{ color: "hsl(45 8% 58%)", fontSize: "1rem" }}
+              >
+                A divisão reducional que garante a variabilidade genética e a continuidade das espécies sexuadas —
+                produzindo 4 gametas únicos a partir de uma única célula.
+              </p>
 
-            <div className="flex flex-wrap gap-8">
-              {[
-                { v: "4", l: "Células-filhas" },
-                { v: "n", l: "Haploide" },
-                { v: "9", l: "Fases" },
-                { v: "Únicas", l: "Geneticamente" },
-              ].map((s, i) => (
-                <div key={i} className="stat-block" style={{ borderLeftColor: "hsl(185 75% 45%)" }}>
-                  <div className="font-display font-bold" style={{ fontSize: "1.8rem", lineHeight: 1, color: "hsl(185 55% 68%)" }}>
-                    {s.v}
+              <div className="flex flex-wrap gap-8">
+                {[
+                  { v: "4", l: "Células-filhas" },
+                  { v: "n", l: "Haploide" },
+                  { v: "9", l: "Fases" },
+                  { v: "Únicas", l: "Geneticamente" },
+                ].map((s, i) => (
+                  <div key={i} className="stat-block" style={{ borderLeftColor: "hsl(185 75% 45%)" }}>
+                    <div className="font-display font-bold" style={{ fontSize: "1.8rem", lineHeight: 1, color: "hsl(185 55% 68%)" }}>
+                      {s.v}
+                    </div>
+                    <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", letterSpacing: "0.1em", color: "hsl(45 8% 45%)" }}>
+                      {s.l.toUpperCase()}
+                    </div>
                   </div>
-                  <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", letterSpacing: "0.1em", color: "hsl(45 8% 45%)" }}>
-                    {s.l.toUpperCase()}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="hidden lg:block"
+            >
+              <img
+                src={meiosisHero}
+                alt="Ilustração do processo de meiose mostrando divisão celular em 4 células"
+                className="w-full max-w-md mx-auto rounded-lg"
+                style={{ border: "1px solid hsl(185 30% 15%)", boxShadow: "0 20px 60px -15px hsl(185 75% 15% / 0.5)" }}
+                width={1024}
+                height={576}
+              />
+            </motion.div>
           </div>
         </div>
       </section>
