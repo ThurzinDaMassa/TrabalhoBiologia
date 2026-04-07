@@ -8,6 +8,7 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import CellDivisionDemo from "@/components/CellDivisionDemo";
 import YouTubeEmbed from "@/components/YouTubeEmbed";
+import mitosisHero from "@/assets/mitosis-hero.jpg";
 
 const phases = [
   {

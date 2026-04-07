@@ -9,6 +9,7 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import CellDivisionDemo from "@/components/CellDivisionDemo";
 import YouTubeEmbed from "@/components/YouTubeEmbed";
+import meiosisHero from "@/assets/meiosis-hero.jpg";
 
 const allPhases = [
   // MEIOSE I
